@@ -1,0 +1,15 @@
+.movie-headers {
+  background-image: url('../../assets/images/bumps.svg');
+  background-color: #B9090B;
+  font-family: 'Bowlby One SC', cursive;
+  height: auto;
+  padding: 1em 0.5em;
+  text-transform: uppercase;
+  width: 100%;
+  color: white;
+  font-size: 1em;
+}
+
+.movie-reviews-content {
+  background: white;
+}
