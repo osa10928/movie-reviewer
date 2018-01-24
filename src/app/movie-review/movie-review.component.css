@@ -1,4 +1,4 @@
-article.movie-reviews-container {
+.movie-reviews-container {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
@@ -14,10 +14,11 @@ article.movie-reviews-container {
   font-size: 1em;
 }
 
-.movie-headers h4 {
-  text-decoration: underline;
-}
-
 .movie-reviews-content {
   background: white;
+}
+
+#movie-review {
+  background: white;
+  padding: 1em;
 }

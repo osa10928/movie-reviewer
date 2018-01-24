@@ -14,4 +14,8 @@ export class MovieService {
     return of(MOVIES)
   }
 
+  getMovie (title:string, year:number): Observable<Movie> {
+    return of(MOVIES.find(movie => movie.title === title && movie.year === year))
+  }
+
 }

@@ -1,7 +1,7 @@
 <main *ngFor="let movie of movies" class="d-flex flex-column align-items-center justify-content-center p-2">
-  <article class="movie-review-container d-flex flex-column w-100">
+  <article class="movie-reviews-container d-flex flex-column w-100">
     <header class="movie-headers text-center">
-      <h4>
+      <h4 routerLink="/movies/{{ movie.title }}/{{ movie.year }}">
         {{ movie.title }}
       </h4>
       <h5>
@@ -19,7 +19,7 @@
             <span class="d-blcok">{{movie.reviewScore.toFixed(1)}}/10.0</span>
           </div>
           <div class="col-4 d-flex flex-column align-items-center justify-content-center">
-            <span class="d-block">IMDb</span>
+            <span class="d-block">IMBd</span>
             <span class="d-blcok">??/10.0</span>
           </div>
           <div class="col-4 d-flex flex-column align-items-center justify-content-center">

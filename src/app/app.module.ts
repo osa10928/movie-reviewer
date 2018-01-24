@@ -11,11 +11,13 @@ import { MovieService } from './movie.service';
 
 import { environment } from '../environments/environment';
 import { MoviesComponent } from './movies/movies.component';
+import { MovieReviewComponent } from './movie-review/movie-review.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MoviesComponent
+    MoviesComponent,
+    MovieReviewComponent
   ],
   imports: [
     BrowserModule,
