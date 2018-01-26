@@ -6,4 +6,7 @@ export class Movie {
   reviewClip?:string;
   reviewSummary?:string;
   reviewScore:number;
+  createdAt?:Date;
+  bestWeek:boolean;
+  bestMonth:boolean;
 }

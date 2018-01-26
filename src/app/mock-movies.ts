@@ -8,7 +8,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=EXeTwQWrcwY",
       "reviewClip":"https://www.youtube.com/watch?v=EXeTwQWrcwY",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":9
+      "reviewScore":9,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"The Avengers",
@@ -17,7 +20,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=eOrNdBpGMv8",
       "reviewClip":"https://www.youtube.com/watch?v=eOrNdBpGMv8",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":9.5
+      "reviewScore":9.5,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"Batman v Superman: Dawn of Justice",
@@ -26,7 +32,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=0WWzgGyAH6Y",
       "reviewClip":"https://www.youtube.com/watch?v=0WWzgGyAH6Y",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":7
+      "reviewScore":7,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"Lee Daniels' The Butler",
@@ -35,7 +44,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=DUA7rr0bOcc",
       "reviewClip":"https://www.youtube.com/watch?v=DUA7rr0bOcc",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":8.5
+      "reviewScore":8.5,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"Get Out",
@@ -44,7 +56,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=xM1YpntE840",
       "reviewClip":"https://www.youtube.com/watch?v=xM1YpntE840",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":9.5
+      "reviewScore":9.5,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"Taken",
@@ -53,7 +68,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=uPJVJBm9TPA",
       "reviewClip":"https://www.youtube.com/watch?v=uPJVJBm9TPA",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":9
+      "reviewScore":9,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"Hugo",
@@ -62,7 +80,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=1bA1cL_s6CE",
       "reviewClip":"https://www.youtube.com/watch?v=1bA1cL_s6CE",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":6
+      "reviewScore":6,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"The Avengers",
@@ -71,7 +92,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=eOrNdBpGMv8",
       "reviewClip":"https://www.youtube.com/watch?v=eOrNdBpGMv8",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":9.5
+      "reviewScore":9.5,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"Legally Blonde",
@@ -80,7 +104,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=E8I-Qzmbqnc",
       "reviewClip":"https://www.youtube.com/watch?v=E8I-Qzmbqnc",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":5
+      "reviewScore":5,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"Pineapple Express",
@@ -89,7 +116,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=BWZt4v6b1hI",
       "reviewClip":"https://www.youtube.com/watch?v=BWZt4v6b1hI",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":7
+      "reviewScore":8,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"Forgetting Sarah Marshall",
@@ -98,7 +128,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=PyVEHIO6jZ0",
       "reviewClip":"https://www.youtube.com/watch?v=PyVEHIO6jZ0",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":8.5
+      "reviewScore":8.5,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"Friday",
@@ -107,7 +140,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=umvFBoLOOgo",
       "reviewClip":"https://www.youtube.com/watch?v=umvFBoLOOgo",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":9.5
+      "reviewScore":9.5,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"Black Panther",
@@ -116,7 +152,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=xjDjIWPwcPU",
       "reviewClip":"https://www.youtube.com/watch?v=xjDjIWPwcPU",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":10
+      "reviewScore":10,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": true
     },
     {
       "title":"Back to the Future",
@@ -125,7 +164,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=qvsgGtivCgs",
       "reviewClip":"https://www.youtube.com/watch?v=qvsgGtivCgs",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":8.5
+      "reviewScore":8.5,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"War for the Planet of the Apes",
@@ -134,7 +176,10 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=qxjPjPzQ1iU",
       "reviewClip":"https://www.youtube.com/watch?v=qxjPjPzQ1iU",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":7
+      "reviewScore":7,
+      "createdAt": new Date(),
+      "bestWeek": false,
+      "bestMonth": false
     },
     {
       "title":"Star Wars: Episode III - Revenge of the Sith",
@@ -143,6 +188,9 @@ export const MOVIES: Movie[] = [
       "trailer":"https://www.youtube.com/watch?v=Yx6F46-_3Ec",
       "reviewClip":"https://www.youtube.com/watch?v=Yx6F46-_3Ec",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
-      "reviewScore":9.5
+      "reviewScore":9.5,
+      "createdAt": new Date(),
+      "bestWeek": true,
+      "bestMonth": false
     }
   ];
