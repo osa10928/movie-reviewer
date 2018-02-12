@@ -1,3 +1,18 @@
-<p>
-  login works!
-</p>
+<main>
+	<header class="text-center">
+		<h3>
+			Login
+		</h3>
+	</header>
+	<form #loginForm="ngForm" class="p-4">
+		<div class="form-group">
+			<label for="username">Username</label>
+			<input type="text" class="form-control" id="username-input" required name="username"/>
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" id="passord-input" required name="password"/>
+		</div>
+		<button type="submit" class="btn btn-success">Success</button>
+	</form>
+</main>
