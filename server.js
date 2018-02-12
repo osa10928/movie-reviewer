@@ -7,6 +7,8 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bluebird = require('bluebird');
 const session = require('express-session');
+const passport = require('passport');
+const MongoStore = require('connect-mongo')(session);
 
 const app = express();
 
@@ -22,9 +24,31 @@ const moviesApi = require('./server/routes/movies');
 
 
 // Parsers
+app.use(cookieParser());
+// TODO: Research more session options as they relate to production
+app.use(session({ 
+	secret: "vegeta",
+	store: new MongoStore({ mongooseConnection: mongoose.connection }),
+	saveUninitialized: false,
+	resave: false
+
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(logger('dev'));
+
+app.use(logger('dev'));
+
+// Cors: Allow no one
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET", "POST", "PUT", "DELETE", "OPTIONS");
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, 'dist')));
