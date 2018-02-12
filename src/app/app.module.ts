@@ -8,16 +8,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 import { MovieService } from './movie.service';
+import { UsersService } from './users.service';
 
 import { environment } from '../environments/environment';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieReviewComponent } from './movie-review/movie-review.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
-    MovieReviewComponent
+    MovieReviewComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,10 @@ import { MovieReviewComponent } from './movie-review/movie-review.component';
     NgbModule.forRoot(),
     HttpClientModule
   ],
-  providers: [MovieService],
+  providers: [
+    MovieService,
+    UsersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,9 +4,11 @@ const path = require('path');
 const http = require('http');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bluebird = require('bluebird');
+const session = require('express-session');
+
 const app = express();
-const cookieParser = require('cookie-parser')
-const bluebird = require('bluebird')
 
 let mongoose = require('mongoose');
 mongoose.Promise = bluebird;
@@ -22,7 +24,7 @@ const moviesApi = require('./server/routes/movies');
 // Parsers
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(logger('dev'));
+//app.use(logger('dev'));
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -54,7 +56,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-// Set export
+// Set port
 const port = process.env.PORT || '3000';
 app.set('port', port);
 

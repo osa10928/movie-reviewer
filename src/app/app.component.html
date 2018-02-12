@@ -1,10 +1,19 @@
 <header class="main-header">
-  <h1 id="main-h1"class="d-flex justify-content-center align-items-center">
+  <h1 id="main-h1" class="d-flex justify-content-center align-items-center">
     Prince Picks
   </h1>
+  <nav class="d-flex justify-content-between">
+  	<a routerLink="/" class="p-2">Home</a>
+  	<a *ngIf="user; else loginBlock" href="#" class="p-2">Welcome {{user.username}}</a>
+  	<ng-template #loginBlock>
+  		<a routerLink="/login" class="p-2">Login</a>
+  	</ng-template>
+  </nav>
 </header>
-<div id="main-layout"class="row p-3">
+<div id="main-layout" class="row p-3">
+  <section class="col-12 col-xm-12 col-md-3">hi</section>
+  <section class="col-12 col-xm-12 col-md-6">
+  	<router-outlet></router-outlet>
+  </section>
   <section class="col-12 col-xm-12 col-md-3">lo</section>
-  <router-outlet class="col-12 col-xm-12 col-md-6"></router-outlet>
-  <section class=" col-12 col-xm-12 col-md-3">lo</section>
 </div>

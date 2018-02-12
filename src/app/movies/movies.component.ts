@@ -4,6 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Movie } from '../classes/movie';
 import { MovieService } from '../movie.service';
 
+
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
