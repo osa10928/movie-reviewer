@@ -1,6 +1,6 @@
 import { Movie } from './classes/movie';
 
-export const MOVIES: Movie[] = [
+export const Movies: Movie[] = [
     {
       "title":"The Dark Knight",
       "year":2008,
