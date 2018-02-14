@@ -21,8 +21,13 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onRegister(loginName, loginPassword) {
-  	console.log(loginName, loginPassword)
+  onRegister(userName, userPassword) {
+  	console.log(userName, userPassword);
+  	this.usersService.registerUser(userName, userPassword)
+  	    .subscribe(user => {
+  	    	console.log(user)
+  	    	//this.usersService.user = user;
+  	    });
   }
 
 }

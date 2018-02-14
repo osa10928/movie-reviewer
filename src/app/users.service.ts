@@ -12,17 +12,16 @@ export class UsersService {
   user:User = null
 
   constructor(private http: HttpClient) { }
-
-  options =  { 
-    withCredentials: true
-  }
   
-  registerUser(username, password) {
-  	const registerPath = 'api/register';
+  registerUser(username:string, password:string): Observable<User> {
+  	const options = {
+  		withCredentials: true
+  	}
+  	const registerPath = 'users/register';
   	const credentials = { username, password };
-  	return this.http.post(registerPath, credentials, this.options)
+  	return this.http.post(registerPath, credentials, options)
   	    .pipe(
-  	    	map(res => of(res))
+  	    	map(res => <User>res )
   	    )
   }
 

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { map, tap, filter } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Movie } from './classes/movie';
 import { Movies } from './mock-movies';
@@ -10,9 +10,12 @@ import { Movies } from './mock-movies';
 @Injectable()
 export class MovieService {
   moviesPath = 'api/movies';
+  moviePath = 'api/movie';
   MOVIES: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+      private http: HttpClient
+   ) { }
 
   // Question: Should I make a request for movies everytime or just once
   // How often will movie data become stale or old.
@@ -23,12 +26,13 @@ export class MovieService {
   }
 
   getMovie(title:string, year:number): Observable<Movie> {
-  	return this.http.get<Movie[]>(this.moviesPath)
-  	    .pipe(
-  	  	    map(req => {
-  	  	    	return req.find(movie => movie.title === title && movie.year === year)
-  	        })
-  	    )
-  	}
+    const params = new HttpParams()
+        .set('title', title)
+        .set('year', year.toString());
+    return this.http.get(this.moviePath, {params})
+        .pipe(
+            map(response => <Movie>response)
+        )
+ }
 
 }

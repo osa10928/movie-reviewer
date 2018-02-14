@@ -4,10 +4,11 @@ const path = require('path');
 const http = require('http');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+const flash = require('flash');
 const cookieParser = require('cookie-parser');
 const bluebird = require('bluebird');
 const session = require('express-session');
-const passport = require('passport');
+const passport = require('./config/passport.js');
 const MongoStore = require('connect-mongo')(session);
 
 const app = express();
@@ -20,11 +21,16 @@ mongoose.connect('mongodb://localhost/movieReview', { promiseLibrary: bluebird})
 
 // API file for interacting with MongoDB
 const moviesApi = require('./server/routes/movies');
+const usersApi = require('./server/routes/users')
 
 
 
 // Parsers
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // TODO: Research more session options as they relate to production
 app.use(session({ 
 	secret: "vegeta",
@@ -35,14 +41,13 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(logger('dev'));
 
 // Cors: Allow no one
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET", "POST", "PUT", "DELETE", "OPTIONS");
@@ -51,25 +56,26 @@ app.use(function(req, res, next) {
 });
 
 // Angular DIST output folder
-app.use(express.static(path.join(__dirname, 'dist')));
 
 // API location
 app.use('/api', moviesApi);
+app.use('/users', usersApi(passport));
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname,'dist/index.html'));
 });
 
+
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
  var err = new Error('Not Found');
  err.status = 404;
  next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
  // set locals, only providing error in development
  res.locals.message = err.message;
  res.locals.error = req.app.get('env') === 'development' ? err : {};
