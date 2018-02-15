@@ -22,12 +22,12 @@ export class LoginComponent implements OnInit {
   }
 
   onRegister(userName, userPassword) {
-  	console.log(userName, userPassword);
   	this.usersService.registerUser(userName, userPassword)
-  	    .subscribe(user => {
-  	    	console.log(user)
+  	    .subscribe(
+  	    	user => console.log(user),
+  	    	error => console.log("got error")
   	    	//this.usersService.user = user;
-  	    });
+  	    );
   }
 
 }

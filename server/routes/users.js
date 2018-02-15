@@ -20,14 +20,15 @@ const userRouter = (passport) => {
 					if (err && err.code != 11000) {
 						console.log(err);
 						console.log(err.code);
-						res.send('An error showed up');
+						res.status(500);
+						res.send('An unexpected error showed up');
 						return;
 					}
 
 					if (err && err.code == 11000) {
 						console.log(err);
-						req.flash('error', 'User already exists');
-						res.redirect('/');
+						res.status(422).send(err);
+						//res.send(err)
 						return
 					}
 					req.login(user, (err) => {
