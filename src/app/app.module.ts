@@ -14,13 +14,16 @@ import { environment } from '../environments/environment';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { LoginComponent } from './login/login.component';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
     MovieReviewComponent,
-    LoginComponent
+    LoginComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { LoginComponent } from './login/login.component';
   ],
   providers: [
     MovieService,
-    UsersService
+    UsersService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

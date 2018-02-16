@@ -1,3 +1,7 @@
+html, body {
+  scroll-behavior: smooth;
+}
+
 .main-header {
   background-image: url('../assets/images/bumps.svg');
   background-color: #B9090B;

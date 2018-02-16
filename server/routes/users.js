@@ -18,7 +18,7 @@ const userRouter = (passport) => {
 				user = new User({ 'username' : username, 'password': hash })
 				user.save((err) => {
 					if (err && err.code != 11000) {
-						console.log(err);
+						console.log(err.message);
 						console.log(err.code);
 						res.status(500);
 						res.send('An unexpected error showed up');
@@ -26,9 +26,8 @@ const userRouter = (passport) => {
 					}
 
 					if (err && err.code == 11000) {
-						console.log(err);
+						console.log(err.message);
 						res.status(422).send(err);
-						//res.send(err)
 						return
 					}
 					req.login(user, (err) => {

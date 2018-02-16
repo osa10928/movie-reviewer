@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { User } from '../classes/user';
 import { UsersService } from '../users.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import { UsersService } from '../users.service';
 export class LoginComponent implements OnInit {
 
   constructor(
-  	private usersService: UsersService
+  	private usersService: UsersService,
+  	private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -25,8 +27,13 @@ export class LoginComponent implements OnInit {
   	this.usersService.registerUser(userName, userPassword)
   	    .subscribe(
   	    	user => console.log(user),
-  	    	error => console.log("got error")
-  	    	//this.usersService.user = user;
+  	    	error => {
+  	    		if (error.error.code === 11000) {
+  	    			this.messageService.add("This username is already registered");
+  	    		} else {
+  	    			this.messageService.add(error.message);
+  	    		}
+  	    	}
   	    );
   }
 
