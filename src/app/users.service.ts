@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Http, RequestOptions, Response, RequestMethod } from '@angular/http';
 
 import { User } from './classes/user';
@@ -11,7 +11,9 @@ import { User } from './classes/user';
 export class UsersService {
   user:User = null
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
   
   registerUser(email:string, password:string): Observable<User> {
   	const options = {
@@ -28,8 +30,19 @@ export class UsersService {
   	    )
   }
 
-  loginUser() {
-
+  loginUser(email:string, password:string) {
+    const options = {
+      withCredentials: true
+    }
+    const credentials = { email, password }
+    const loginPath = 'users/login';
+    return this.http.post(loginPath, credentials, options)
+      .pipe(
+        map((res:any) => {
+          const user:User = {local: res.local, username: res.local.email}
+          return <User> user;
+        })
+      )
   }
 
   saveUser(user) {
@@ -38,8 +51,27 @@ export class UsersService {
   }
 
   getUser() {
-    return this.user = JSON.parse(localStorage.getItem('Prince Picks')).username;
+    if (JSON.parse(localStorage.getItem('Prince Picks'))) { return this.user = JSON.parse(localStorage.getItem('Prince Picks')).username; }
+    return null;
   }
+
+  logout() {
+    if (JSON.parse(localStorage.getItem('Prince Picks'))) {
+      localStorage.clear();
+      const logoutPath = 'users/logout';
+      const options = {
+        withCredentials: false
+      }
+      return this.http.post(logoutPath, options)
+        .pipe(
+          map(res => {
+            console.log(res)
+            return <any>res
+          })
+        )
+    }
+  }
+
 
   ngOnInit() {
     this.getUser()

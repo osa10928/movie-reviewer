@@ -1,17 +1,17 @@
 <header class="main-header">
   <h1 id="main-h1" class="d-flex justify-content-center align-items-center">
-    Prince Picks
+    PRINCE PICKS
   </h1>
   <nav class="d-flex justify-content-between">
-  	<a routerLink="/" class="d-flex p-2">Home</a>
-  	<div *ngIf="this.usersService.getUser; else loginBlock" href="#" class="p-2 ml-3 d-flex">
-      <p class="mb-0">Welcome</p>
+  	<a routerLink="/" class="d-flex align-items-center p-2">Home</a>
+  	<div *ngIf="this.usersService.getUser(); else loginBlock" href="#" class="p-2 ml-3 d-flex">
+      <p class="mb-0 align-middle d-inline-block">Welcome</p>
       <div ngbDropdown class="d-inline-block">
-        <button class="btn dropdown-toggle ml-3" type="button" id="navDropdown" ngbDropdownToggle>
+        <button class="btn dropdown-toggle" type="button" id="navDropdown" ngbDropdownToggle>
           {{ this.usersService.getUser() | TitleCasePipe }}
         </button>
         <div ngbDropdownMenu aria-labelledby="navDropdown">
-          <button class="dropdown-item" href="#">Logout</button>
+          <button (click)="this.logout()" class="dropdown-item" href="#">Logout</button>
         </div>
       </div>
     </div>

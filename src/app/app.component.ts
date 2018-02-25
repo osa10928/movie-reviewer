@@ -41,4 +41,12 @@ export class AppComponent {
     },15);
   }
 
+  logout() {
+    this.usersService.logout()
+      .subscribe(
+        message => this.messageService.add(message.success),
+        error => this.messageService.add(error.message)
+      )
+  }
+
 }

@@ -43,35 +43,28 @@ const userRouter = (passport) => {
 				res.json(user)
 			})
 		})
-
-	router.post('/login', )
-
+	})
 /*
-		bcrypt.genSalt(saltRounds, (err, salt) => {
-			bcrypt.hash(password, salt, (err, hash) => {
-				user = new User({ 'username' : username, 'password': hash })
-				user.save((err) => {
-					if (err && err.code != 11000) {
-						console.log(err.message);
-						console.log(err.code);
-						res.status(500);
-						res.send('An unexpected error showed up');
-						return;
-					}
-
-					if (err && err.code == 11000) {
-						console.log(err.message);
-						res.status(422).send(err);
-						return
-					}
-					req.login(user, (err) => {
-						console.log(req)
-						res.json(user)
-					})
-				})
-			})
-		})
+	router.post('/login', (req, res) => {
+		console.log(req)
+		res.json({"email":"stephen", "password":"djdhfjf"})
+	})
 */
+
+	router.post('/login', passport.authenticate('local'), (req, res) => {
+		res.json(req.user)
+	})
+
+
+	router.post('/logout', (req, res) => {
+		req.logout()
+		if (req.user) {
+			console.log('error')
+			let err = new Error()
+			err.message("unable to log user out")
+			res.send(err)
+		}
+		res.json({"success":"User logged out"})
 	})
 
 	return router;

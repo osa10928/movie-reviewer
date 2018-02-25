@@ -10,24 +10,17 @@ module.exports = (passport) => {
 			passwordField: 'password',
 			passReqToCallback: true
 		},
-		function(req, email, password, done) {
+		function(req, username, password, done) {
 
-			User.findOne({ 'local.email': email }, (err, user) => {
+			User.findOne({ 'local.email': username }, (err, user) => {
 				if (err) { return done(err); }
-				if (user) {
-					return done(null, false); 
-				} else {
-					const newUser = new User()
-					newUser.local.email = email
-					newUser.local.password = newUser.generateHash(password)
-
-					newUser.save((err) => {
-						if (err) {
-							throw err
-						}
-						return done(null, newUser)
-					})
+				if (!user) {
+					return done(null, false, { message:"there user with this email" }); 
 				}
+				if (!user.validPassword(password)) {
+					return done(null, false, { message: 'Incorrect password' })
+				}
+				return done(null, user)
 			});
 		}
 	));
