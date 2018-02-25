@@ -15,7 +15,6 @@ import { MessageService } from './message.service';
 
 export class AppComponent {
   title = 'app';
-  user: User;
 
   constructor(
     private usersService: UsersService,
@@ -30,17 +29,6 @@ export class AppComponent {
    }
 
   ngOnInit() {
-    this.getUser();
-  }
-
-  getUser(): void {
-  	this.user = this.usersService.getUser();
-  	/*
-    this.usersService.getUser()
-      .subscribe(user => {
-        this.user = user
-      });
-      */
   }
 
   topOfPage(): void {

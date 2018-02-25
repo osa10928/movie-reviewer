@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { User } from '../classes/user';
 import { UsersService } from '../users.service';
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
   	private usersService: UsersService,
-  	private messageService: MessageService
+  	private messageService: MessageService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -23,10 +25,13 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onRegister(userName, userPassword) {
-  	this.usersService.registerUser(userName, userPassword)
+  onRegister(userEmail, userPassword) {
+  	this.usersService.registerUser(userEmail, userPassword)
   	    .subscribe(
-  	    	user => console.log(user),
+  	    	user => {
+            this.usersService.saveUser(user)
+            this.router.navigate(['/']);
+          },
   	    	error => {
   	    		if (error.error.code === 11000) {
   	    			this.messageService.add("This username is already registered");

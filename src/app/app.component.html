@@ -3,8 +3,18 @@
     Prince Picks
   </h1>
   <nav class="d-flex justify-content-between">
-  	<a routerLink="/" class="p-2">Home</a>
-  	<a *ngIf="user; else loginBlock" href="#" class="p-2">Welcome {{user.username}}</a>
+  	<a routerLink="/" class="d-flex p-2">Home</a>
+  	<div *ngIf="this.usersService.getUser; else loginBlock" href="#" class="p-2 ml-3 d-flex">
+      <p class="mb-0">Welcome</p>
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn dropdown-toggle ml-3" type="button" id="navDropdown" ngbDropdownToggle>
+          {{ this.usersService.getUser() | TitleCasePipe }}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="navDropdown">
+          <button class="dropdown-item" href="#">Logout</button>
+        </div>
+      </div>
+    </div>
   	<ng-template #loginBlock>
   		<a routerLink="/login" class="p-2">Login</a>
   	</ng-template>

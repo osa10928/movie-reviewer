@@ -1,23 +1,33 @@
-let passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
+const User = require('../models/users');
 
-passportApp = () => {
-	passport.use(new localStrategy(
-		(username, password, done) => {
-			User.findOne({ username: username }, (err, user) => {
+module.exports = (passport) => {
+	passport.use(
+		'local',
+		new localStrategy({
+			usernameField: 'email',
+			passwordField: 'password',
+			passReqToCallback: true
+		},
+		function(req, email, password, done) {
+
+			User.findOne({ 'local.email': email }, (err, user) => {
 				if (err) { return done(err); }
-				if (!user) {return done(null, false); }
-				
-				bcrypt.compare(password, user.password, (err, isValid) => {
-					if (err) {
-						return done(err)
-					}
-					if (!isValid) {
-						return done(null, false)
-					}
-					return done(null, user)
-				})
+				if (user) {
+					return done(null, false); 
+				} else {
+					const newUser = new User()
+					newUser.local.email = email
+					newUser.local.password = newUser.generateHash(password)
+
+					newUser.save((err) => {
+						if (err) {
+							throw err
+						}
+						return done(null, newUser)
+					})
+				}
 			});
 		}
 	));
@@ -26,11 +36,13 @@ passportApp = () => {
 		done(null, user.id);
 	})
 
-	passport.deserializeUser((obj, done) => {
-		done(err, user)
+	passport.deserializeUser((id, done) => {
+		 User.findById(id, function(err, user) {
+            done(err, user);
+        });
 	})
 
 	return passport
 }
 
-module.exports = passport;
+;

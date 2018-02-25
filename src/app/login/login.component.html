@@ -5,14 +5,14 @@
 			    Login
 		    </h3>
 	    </header>
-	    <form (ngSubmit)="onLogin(loginName.value, loginPassword.value)" #loginForm class="p-4">
+	    <form (ngSubmit)="onLogin(loginEmail.value, loginPassword.value)" #loginForm class="p-4">
 		    <div class="form-group">
-			    <label for="username">Username</label>
-			    <input #loginPassord type="text" class="form-control" required name="username"/>
+			    <label for="email">Email</label>
+			    <input #loginEmail type="text" class="form-control" required name="email"/>
 		    </div>
 		    <div class="form-group">
 			    <label for="password">Password</label>
-			    <input #loginName type="password" class="form-control" required name="password"/>
+			    <input #loginPassword type="password" class="form-control" required name="password"/>
 		    </div>
 		    <button type="submit" class="btn btn-success">Login</button>
 	    </form>
@@ -23,10 +23,10 @@
 			    Register
 		    </h3>
 	    </header>
-	    <form (ngSubmit)="onRegister(registerName.value, registerPassword.value)" #registerForm class="p-4">
+	    <form (ngSubmit)="onRegister(registerEmail.value, registerPassword.value)" #registerForm class="p-4">
 		    <div class="form-group">
-			    <label for="username">Username</label>
-			    <input #registerName type="text" class="form-control" required name="username"/>
+			    <label for="email">Email</label>
+			    <input #registerEmail type="text" class="form-control" required name="email"/>
 		    </div>
 		    <div class="form-group">
 			    <label for="password">Password</label>

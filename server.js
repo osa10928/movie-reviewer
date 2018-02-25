@@ -8,7 +8,7 @@ const flash = require('flash');
 const cookieParser = require('cookie-parser');
 const bluebird = require('bluebird');
 const session = require('express-session');
-const passport = require('./config/passport.js');
+const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
 
 const app = express();
@@ -39,6 +39,8 @@ app.use(session({
 	resave: false
 
 }));
+
+require('./config/passport.js')(passport)
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

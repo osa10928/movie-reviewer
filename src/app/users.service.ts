@@ -13,15 +13,18 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
   
-  registerUser(username:string, password:string): Observable<User> {
+  registerUser(email:string, password:string): Observable<User> {
   	const options = {
   		withCredentials: true
   	}
   	const registerPath = 'users/register';
-  	const credentials = { username, password };
+  	const credentials = { email, password };
   	return this.http.post(registerPath, credentials, options)
   	    .pipe(
-  	    	map(res => <User>res )
+  	    	map((res:any) => {
+            const user:User = {local: res.local, username: res.local.email}
+            return <User> user;
+          })
   	    )
   }
 
@@ -29,7 +32,18 @@ export class UsersService {
 
   }
 
-  getUser() {
-  	return this.user;
+  saveUser(user) {
+    localStorage.setItem('Prince Picks', JSON.stringify(user));
+    this.getUser()
   }
+
+  getUser() {
+    return this.user = JSON.parse(localStorage.getItem('Prince Picks')).username;
+  }
+
+  ngOnInit() {
+    this.getUser()
+  }
+
+
 }

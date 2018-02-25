@@ -4,6 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
@@ -16,6 +17,8 @@ import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
+import { TitleCasePipe } from './titleCase.pipe';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { MessageService } from './message.service';
     MoviesComponent,
     MovieReviewComponent,
     LoginComponent,
-    MessagesComponent
+    MessagesComponent,
+    TitleCasePipe
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,8 @@ import { MessageService } from './message.service';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     NgbModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbDropdownModule.forRoot()
   ],
   providers: [
     MovieService,
