@@ -44,12 +44,21 @@ const userRouter = (passport) => {
 			})
 		})
 	})
-/*
-	router.post('/login', (req, res) => {
-		console.log(req)
-		res.json({"email":"stephen", "password":"djdhfjf"})
+
+	router.get('/auth/facebook', passport.authenticate('facebook', {
+		scope: ['public_profile', 'email']
+	}))
+
+	router.get('auth/facebook/callback', (req, res, next) => {
+		passport.authenticate('facebook', (err, user, info) => {
+			if (err) {
+				console.log(err)
+				return next(err);
+			}
+			res.json(req.user)
+		})(req, res, next)
 	})
-*/
+
 
 	router.post('/login', (req, res, next) => {
 		passport.authenticate('local', function(err, user, info) {
@@ -79,10 +88,6 @@ const userRouter = (passport) => {
 		res.json({"success":"User logged out"})
 	})
 
-	function beforeLogin(req, next) {
-		req.logout()
-		return next()
-	}
 
 	return router;
 }

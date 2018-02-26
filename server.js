@@ -10,6 +10,7 @@ const bluebird = require('bluebird');
 const session = require('express-session');
 const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
+require('dotenv').config();
 
 const app = express();
 
@@ -33,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // TODO: Research more session options as they relate to production
 app.use(session({ 
-	secret: "vegeta",
+	secret: process.env.SESSION_SECRET,
 	store: new MongoStore({ mongooseConnection: mongoose.connection }),
 	saveUninitialized: false,
 	resave: false
