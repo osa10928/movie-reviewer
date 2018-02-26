@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           console.log(error)
-          this.messageService.add(error.message)
+          this.messageService.add(error.error)
         }
       );
   }
@@ -43,11 +43,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/']);
           },
   	    	error => {
-  	    		if (error.error.code === 11000) {
-  	    			this.messageService.add("This username is already registered");
-  	    		} else {
-  	    			this.messageService.add(error.message);
-  	    		}
+            console.log(error)
+  	    		this.messageService.add(error.error);
   	    	}
   	    );
   }

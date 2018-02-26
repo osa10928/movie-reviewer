@@ -15,10 +15,10 @@ module.exports = (passport) => {
 			User.findOne({ 'local.email': username }, (err, user) => {
 				if (err) { return done(err); }
 				if (!user) {
-					return done(null, false, { message:"there user with this email" }); 
+					return done(null, false, { status:404, message:"No user found" }); 
 				}
 				if (!user.validPassword(password)) {
-					return done(null, false, { message: 'Incorrect password' })
+					return done(null, false, { status: 401, message: 'Incorrect password' })
 				}
 				return done(null, user)
 			});
