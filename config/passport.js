@@ -29,7 +29,8 @@ module.exports = (passport) => {
 	passport.use(new FaceBookStrategy({
 		clientID: process.env.FACEBOOK_CLIENT_ID,
 		clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-		callbackURL: "http://localhost:8000/auth/facebook/callback"
+		callbackURL: "http://localhost:3000/auth/facebook/callback",
+		profileFields: ['id', 'displayName', 'photos', 'email']
 	},
 
 	// facebook sends back token and profile
@@ -42,8 +43,11 @@ module.exports = (passport) => {
 			} else {
 				let newUser = new User();
 				newUser.facebook.id = profile.id;
+				newUser.facebook.name = profile.displayName;
+				newUser.facebook.email = profile.email;
+				newUser.facebook.picture = profile.photos ? profile.photos[0].value : null;
 				newUser.facebook.token = token;
-				newUser.facebook.name = profile.name.givenName + " " + profile.name.familyName
+				
 
 				newUser.save(err => {
 					if (err) { throw err; }

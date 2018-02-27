@@ -12,7 +12,8 @@ const UserSchema = new mongoose.Schema({
         id           : String,
         token        : String,
         name         : String,
-        email        : String
+        email        : String,
+        picture        : String
     },
     twitter          : {
         id           : String,

@@ -1,26 +1,4 @@
-<header class="main-header">
-  <h1 id="main-h1" class="d-flex justify-content-center align-items-center">
-    PRINCE PICKS
-  </h1>
-  <nav class="d-flex justify-content-between">
-  	<a routerLink="/" class="d-flex align-items-center p-2">Home</a>
-  	<div *ngIf="this.usersService.getUser(); else loginBlock" href="#" class="p-2 ml-3 d-flex">
-      <p class="mb-0 align-middle d-inline-block">Welcome</p>
-      <div ngbDropdown class="d-inline-block">
-        <button class="btn dropdown-toggle" type="button" id="navDropdown" ngbDropdownToggle>
-          {{ this.usersService.getUser() | TitleCasePipe }}
-        </button>
-        <div ngbDropdownMenu aria-labelledby="navDropdown">
-          <button (click)="this.logout()" class="dropdown-item" href="#">Logout</button>
-        </div>
-      </div>
-    </div>
-  	<ng-template #loginBlock>
-  		<a routerLink="/login" class="p-2">Login</a>
-  	</ng-template>
-  </nav>
-</header>
-<button (click)="topOfPage()" id="new-message-btn" class="d-none"></button>
+<app-navigation></app-navigation>
 <app-messages></app-messages>
 <div id="main-layout" class="row p-3">
   <section class="col-12 col-xm-12 col-md-3">hi</section>

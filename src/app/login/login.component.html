@@ -5,17 +5,26 @@
 			    Login
 		    </h3>
 	    </header>
-	    <form (ngSubmit)="onLogin(loginEmail.value, loginPassword.value)" #loginForm class="p-4">
-		    <div class="form-group">
-			    <label for="email">Email</label>
-			    <input #loginEmail type="text" class="form-control" required name="email"/>
-		    </div>
-		    <div class="form-group">
-			    <label for="password">Password</label>
-			    <input #loginPassword type="password" class="form-control" required name="password"/>
-		    </div>
-		    <button type="submit" class="btn btn-success">Login</button>
-	    </form>
+	    <div id="login-options-container" class="d-flex flex-column">
+	    	<section id="oauth-container" class="d-flex">
+	    		<button (click)="onFacebookLogin()" class="loginBtn loginBtn--facebook">
+	    			<span><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png"/></span>| Login with Facebook
+	    		</button>
+	    	</section>
+	    	<section id="login-form-container">
+			    <form (ngSubmit)="onLogin(loginEmail.value, loginPassword.value)" #loginForm class="p-4">
+				    <div class="form-group">
+					    <label for="email">Email</label>
+					    <input #loginEmail type="text" class="form-control" required name="email"/>
+				    </div>
+				    <div class="form-group">
+					    <label for="password">Password</label>
+					    <input #loginPassword type="password" class="form-control" required name="password"/>
+				    </div>
+				    <button type="submit" class="btn btn-success">Login</button>
+			    </form>
+			</section>
+		</div>
 	</article>
 	<article id="register" class="m-2">
 	    <header class="text-center">

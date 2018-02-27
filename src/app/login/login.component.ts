@@ -21,7 +21,24 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLogin (userEmail, userPassword) {
+  onFacebookLogin() {
+    this.usersService.facebookLoginUser()
+      .subscribe(
+        user => {
+          console.log(user)
+          /*
+          this.usersService.saveUser(user)
+          this.router.navigate(['/']);
+          */
+        },
+         error => {
+           console.log(error)
+           this.messageService.add(error.error)
+         }
+      )
+  }
+
+  onLogin(userEmail, userPassword) {
     this.usersService.loginUser(userEmail, userPassword)
       .subscribe(
         user => {

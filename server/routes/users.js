@@ -45,8 +45,10 @@ const userRouter = (passport) => {
 		})
 	})
 
+/* Save Facebook login for production 
+
 	router.get('/auth/facebook', passport.authenticate('facebook', {
-		scope: ['public_profile', 'email']
+		scope: ['email', 'photos']
 	}))
 
 	router.get('auth/facebook/callback', (req, res, next) => {
@@ -58,6 +60,7 @@ const userRouter = (passport) => {
 			res.json(req.user)
 		})(req, res, next)
 	})
+*/
 
 
 	router.post('/login', (req, res, next) => {
@@ -70,6 +73,12 @@ const userRouter = (passport) => {
 				res.status(info.status).send(info.message)
 				return
 			}
+			req.login(user, (err) => {
+				if (err) {
+					console.log(err)
+					return next(err)
+				}
+			})
 			res.json(req.user)
 		})(req, res, next);
 	})
@@ -84,8 +93,9 @@ const userRouter = (passport) => {
 			err.status = 401
 			err.message("unable to log user out")
 			res.send(err)
+		} else {
+			res.json({"success":"User logged out"})
 		}
-		res.json({"success":"User logged out"})
 	})
 
 
