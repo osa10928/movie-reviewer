@@ -20,5 +20,10 @@ router.get('/movie', (req, res, next) => {
 	})
 })
 
+router.post("/addmovie", (req, res, next) => {
+	console.log(req.body)
+	console.log('hey')
+})
+
 
 module.exports = router;

@@ -45,8 +45,9 @@ export class UsersService {
       )
   }
 
+  /*
+
   facebookLoginUser() {
-    console.log("right before get")
     return this.http.get('users/auth/facebook')
     .pipe(
       map((res:any) => {
@@ -54,6 +55,7 @@ export class UsersService {
       })
      )
   }
+  */
 
   saveUser(user) {
     localStorage.setItem('Prince Picks', JSON.stringify(user));

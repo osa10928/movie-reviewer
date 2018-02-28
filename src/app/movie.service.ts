@@ -9,9 +9,6 @@ import { Movies } from './mock-movies';
 
 @Injectable()
 export class MovieService {
-  moviesPath = 'api/movies';
-  moviePath = 'api/movie';
-  MOVIES: any;
 
   constructor(
       private http: HttpClient
@@ -22,17 +19,28 @@ export class MovieService {
   // TODO: Create a way to make a fresh request every 24 hours (or sooner).
 
   getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.moviesPath)
+    return this.http.get<Movie[]>("movies/movies")
   }
 
   getMovie(title:string, year:number): Observable<Movie> {
     const params = new HttpParams()
         .set('title', title)
         .set('year', year.toString());
-    return this.http.get(this.moviePath, {params})
+    return this.http.get("movies/movie", {params})
         .pipe(
-            map(response => <Movie>response)
+            map(res => <Movie>res)
         )
- }
+  }
+
+  addMovie(movie:object) {
+    const options = {
+      withCredentials: true
+    }
+    const credentials = movie
+    return this.http.post("movies/addmovie", credentials, options)
+      .pipe(
+        map(res => console.log(res))
+       )
+  }
 
 }

@@ -21,15 +21,14 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+/*
   onFacebookLogin() {
     this.usersService.facebookLoginUser()
       .subscribe(
         user => {
           console.log(user)
-          /*
           this.usersService.saveUser(user)
           this.router.navigate(['/']);
-          */
         },
          error => {
            console.log(error)
@@ -37,6 +36,8 @@ export class LoginComponent implements OnInit {
          }
       )
   }
+*/
+
 
   onLogin(userEmail, userPassword) {
     this.usersService.loginUser(userEmail, userPassword)

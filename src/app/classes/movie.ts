@@ -1,8 +1,9 @@
 export class Movie {
-  title:string;
+  movieTitle:string;
   year:number;
   imdb?:string;
   trailer?:string;
+  reviewTitle?:string;
   reviewClip?:string;
   reviewSummary?:string;
   reviewScore:number;

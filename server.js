@@ -62,7 +62,7 @@ app.use((req, res, next) => {
 // Angular DIST output folder
 
 // API location
-app.use('/api', moviesApi);
+app.use('/movies', moviesApi);
 app.use('/users', usersApi(passport));
 
 // Send all other requests to the Angular app

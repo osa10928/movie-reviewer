@@ -8,10 +8,10 @@
 		<button class="btn" type="button" id="add-movie-button">
 			Add Movie Review
 		</button>
-		<form (ngSubmit)="onSubmit(title.value, year.value, imdb.value, trailer.value, reviewClip.value, reviewSummary.value, reviewScore.value, bestWeek.checked, bestMonth.checked)" #reviewForm="ngForm" class="p-4">
+		<form (ngSubmit)="onSubmit(movieTitle.value, year.value, imdb.value, trailer.value, reviewTitle.value, reviewClip.value, reviewSummary.value, reviewScore.value, bestWeek.checked, bestMonth.checked)" #reviewForm="ngForm" class="p-4">
 			<div class="form-group">
-				<label for="title">Title</label>
-				<input #title type="text" class="form-control" [(ngModel)]="reviewForm.title" name="title" required />
+				<label for="movieTitle">Movie Title</label>
+				<input #movieTitle type="text" class="form-control" [(ngModel)]="reviewForm.movieTitle" name="movieTitle" required />
 				<div class="mt-1" style="color:red">
 					*required
 				</div>
@@ -36,13 +36,18 @@
 			</div>
 
 			<div class="form-group">
+				<label for="Review Title">Review Title</label>
+				<input #reviewTitle type="text" class="form-control" name="reviewTitle" />
+			</div>
+
+			<div class="form-group">
 				<label for="reviewClip"></label>Youtube Review Clip
 				<input #reviewClip type="text" class="form-control" name="reviewClip" />
 			</div>
 
 			<div class="form-group">
 				<label for="reviewSummary">Review Summary</label>
-				<input #reviewSummary type="text" class="form-control" name="reviewSummary" />
+				<textarea #reviewSummary type="textarea" class="form-control" name="reviewSummary"></textarea>
 			</div>
 
 			<div class="form-group">

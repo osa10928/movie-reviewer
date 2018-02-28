@@ -1,7 +1,5 @@
-import { Movie } from './classes/movie';
 
-export const Movies: Movie[] = [
-    {
+{
       "movieTitle":"The Dark Knight",
       "year":2008,
       "imdb":"tt0468569",
@@ -10,10 +8,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=EXeTwQWrcwY",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":9,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"The Avengers",
       "year":2012,
@@ -23,10 +21,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=eOrNdBpGMv8",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":9.5,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"Batman v Superman: Dawn of Justice",
       "year":2016,
@@ -36,10 +34,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=0WWzgGyAH6Y",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":7,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"Lee Daniels' The Butler",
       "year":2013,
@@ -49,10 +47,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=DUA7rr0bOcc",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":8.5,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"Get Out",
       "year":2017,
@@ -62,10 +60,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=xM1YpntE840",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":9.5,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"Taken",
       "year":2008,
@@ -75,10 +73,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=uPJVJBm9TPA",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":9,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"Hugo",
       "year":2011,
@@ -88,10 +86,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=1bA1cL_s6CE",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":6,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"The Avengers",
       "year":2008,
@@ -101,10 +99,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=eOrNdBpGMv8",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":9.5,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"Legally Blonde",
       "year":2001,
@@ -114,10 +112,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=E8I-Qzmbqnc",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":5,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"Pineapple Express",
       "year":2008,
@@ -127,10 +125,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=BWZt4v6b1hI",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":8,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"Forgetting Sarah Marshall",
       "year":2008,
@@ -140,10 +138,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=PyVEHIO6jZ0",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":8.5,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"Friday",
       "year":1995,
@@ -153,10 +151,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=umvFBoLOOgo",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":9.5,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"Black Panther",
       "year":2018,
@@ -166,10 +164,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=xjDjIWPwcPU",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":10,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": true
-    },
+    }
     {
       "movieTitle":"Back to the Future",
       "year":1985,
@@ -179,10 +177,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=qvsgGtivCgs",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":8.5,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"War for the Planet of the Apes",
       "year":2017,
@@ -192,10 +190,10 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=qxjPjPzQ1iU",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":7,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": false,
       "bestMonth": false
-    },
+    }
     {
       "movieTitle":"Star Wars: Episode III - Revenge of the Sith",
       "year":2005,
@@ -205,8 +203,7 @@ export const Movies: Movie[] = [
       "reviewClip":"https://www.youtube.com/watch?v=Yx6F46-_3Ec",
       "reviewSummary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim molestie nulla at congue. Cras porttitor tincidunt leo quis sagittis. Duis et dignissim ipsum, a dignissim turpis. Suspendisse dictum justo in dolor blandit hendrerit. Nulla arcu urna, scelerisque a justo et, pretium lobortis arcu. Vestibulum efficitur id risus quis malesuada. Aenean lacinia consectetur massa a ultrices. In orci leo, vehicula non mauris nec, vulputate accumsan magna. Duis at feugiat nibh, vitae eleifend ante,",
       "reviewScore":9.5,
-      "createdAt": new Date(),
+      "createdAt": new Date("2017-05-18T16:00:00Z"),
       "bestWeek": true,
       "bestMonth": false
     }
-  ];
