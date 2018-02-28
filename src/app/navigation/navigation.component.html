@@ -11,6 +11,7 @@
           {{ this.usersService.getUser() | TitleCasePipe }}
         </button>
         <div ngbDropdownMenu aria-labelledby="navDropdown">
+          <button routerLink="/admin" class="dropdown-item" href="#">Admin</button>
           <button (click)="this.logout()" class="dropdown-item" href="#">Logout</button>
         </div>
       </div>

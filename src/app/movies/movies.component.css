@@ -16,6 +16,7 @@ article.movie-reviews-container {
 
 .movie-headers h4 {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .movie-reviews-content {

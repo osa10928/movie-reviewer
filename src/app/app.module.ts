@@ -19,6 +19,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { TitleCasePipe } from './titleCase.pipe';
 import { NavigationComponent } from './navigation/navigation.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     LoginComponent,
     MessagesComponent,
     TitleCasePipe,
-    NavigationComponent
+    NavigationComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

@@ -4,12 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { LoginComponent } from './login/login.component';
-
+import { AdminComponent } from './admin/admin.component';
 const routes: Routes = [
   { path: '', component: MoviesComponent },
   { path: 'movies', component: MoviesComponent },
   { path: 'movies/:title/:year', component: MovieReviewComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'admin', component: AdminComponent }
 ];
 
 @NgModule({

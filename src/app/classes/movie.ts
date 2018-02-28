@@ -1,6 +1,6 @@
 export class Movie {
   title:string;
-  year?:number;
+  year:number;
   imdb?:string;
   trailer?:string;
   reviewClip?:string;
