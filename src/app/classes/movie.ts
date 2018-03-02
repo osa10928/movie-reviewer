@@ -2,6 +2,7 @@ export class Movie {
   movieTitle:string;
   year:number;
   imdb?:string;
+  imdbRating?:number;
   trailer?:string;
   reviewTitle?:string;
   reviewClip?:string;
@@ -10,4 +11,5 @@ export class Movie {
   createdAt?:Date;
   bestWeek:boolean;
   bestMonth:boolean;
+  poster?:string;
 }

@@ -20,11 +20,6 @@ mongoose.connect('mongodb://localhost/movieReview', { promiseLibrary: bluebird})
   .then(() => console.log('connection successful'))
   .catch((err) => console.error(err));
 
-// API file for interacting with MongoDB
-const moviesApi = require('./server/routes/movies');
-const usersApi = require('./server/routes/users')
-
-
 
 // Parsers
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -61,8 +56,13 @@ app.use((req, res, next) => {
 
 // Angular DIST output folder
 
+// API file for interacting with MongoDB
+const moviesApi = require('./server/routes/movies');
+const usersApi = require('./server/routes/users')
+
+
 // API location
-app.use('/movies', moviesApi);
+app.use('/movies', moviesApi(passport));
 app.use('/users', usersApi(passport));
 
 // Send all other requests to the Angular app

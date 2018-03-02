@@ -4,6 +4,7 @@ const MovieSchema = new mongoose.Schema({
   movieTitle: String,
   year: Number,
   imdb: String,
+  imdbRating: Number,
   trailer: String,
   reviewTitle: String,
   reviewClip: String,
@@ -11,7 +12,9 @@ const MovieSchema = new mongoose.Schema({
   reviewScore: Number,
   createdAt: Date,
   bestWeek: Boolean,
-  bestMonth: Boolean
+  bestMonth: Boolean,
+  poster: String
 })
+
 
 module.exports = mongoose.model('Movie', MovieSchema);

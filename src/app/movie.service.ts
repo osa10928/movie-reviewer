@@ -39,8 +39,10 @@ export class MovieService {
     const credentials = movie
     return this.http.post("movies/addmovie", credentials, options)
       .pipe(
-        map(res => console.log(res))
-       )
+        map((res:any) => {
+          return <Movie> res
+        })
+      )
   }
 
 }
