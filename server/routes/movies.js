@@ -16,9 +16,9 @@ const movieRouter = (passport) => {
 	});
 
 	router.get('/movie', (req, res, next) => {
-		const title = req.query.title;
+		const movieTitle = req.query.movieTitle;
 		const year = parseInt(req.query.year);
-		Movie.findOne({ 'title': title, 'year': year }, function(err, product) {
+		Movie.findOne({ 'movieTitle': movieTitle, 'year': year }, function(err, product) {
 			if (err) return next(err);
 			res.json(product);
 		})

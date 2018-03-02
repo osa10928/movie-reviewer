@@ -22,9 +22,9 @@ export class MovieService {
     return this.http.get<Movie[]>("movies/movies")
   }
 
-  getMovie(title:string, year:number): Observable<Movie> {
+  getMovie(movieTitle:string, year:number): Observable<Movie> {
     const params = new HttpParams()
-        .set('title', title)
+        .set('movieTitle', movieTitle)
         .set('year', year.toString());
     return this.http.get("movies/movie", {params})
         .pipe(

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule }   from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { Movie } from '../classes/movie';
 import { MovieService } from '../movie.service';
@@ -15,7 +16,8 @@ export class AdminComponent implements OnInit {
 
   constructor(
   	private movieService: MovieService,
-  	private messageService: MessageService
+  	private messageService: MessageService,
+  	private router: Router
   ) { }
 
   ngOnInit() {
@@ -26,11 +28,10 @@ export class AdminComponent implements OnInit {
   		.subscribe(
   			movie => {
   				this.messageService.add("Movie Was Successfully added!")
-  				let title = movie['title'], year = movie['year']
+  				let movieTitle = movie['movieTitle'], year = movie['year'];
   				setTimeout(() => {
-  					console.log('hey')
-  					console.log(title, year)
-  					this.movieService.getMovie(title, year);
+  					console.log('in')
+  					this.router.navigate([`/movies/${movieTitle}/${year}`])
   				}, 5000)
   			},
   			error => {

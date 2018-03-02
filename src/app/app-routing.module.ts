@@ -8,7 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 const routes: Routes = [
   { path: '', component: MoviesComponent },
   { path: 'movies', component: MoviesComponent },
-  { path: 'movies/:title/:year', component: MovieReviewComponent },
+  { path: 'movies/:movieTitle/:year', component: MovieReviewComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent }
 ];

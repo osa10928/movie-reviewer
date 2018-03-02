@@ -1,7 +1,7 @@
 <main class="d-flex flex-column align-items-center justify-content-center">
   <article *ngFor="let movie of movies" class="movie-reviews-container d-flex flex-column w-100 p-2">
     <header class="movie-headers text-center">
-      <h4 routerLink="/movies/{{ movie.title }}/{{ movie.year }}">
+      <h4 routerLink="/movies/{{ movie.movieTitle }}/{{ movie.year }}">
         {{ movie.movieTitle }}
       </h4>
       <h5>
@@ -11,7 +11,10 @@
     <div class="movie-reviews-content d-flex flex-colum p-3">
       <div class="movie-info row align-items-center">
         <div class="reviews-poster-container col-3">
-          <img class="img-fluid" src="../../assets/images/mock-poster.jpg" alt="{{movie.title}}-poster" />
+          <img *ngIf="movie.poster; else mockPosterBlock" class="img-fluid" src="{{ movie.poster }}" alt="{{movie.title}}-poster" />
+          <ng-template #mockPosterBlock>
+            <img class="img-fluid" src="../../assets/images/mock-poster.jpg" alt="{{movie.title}}-poster" />
+          </ng-template>
         </div>
         <div class="review-scores-info col-9 row">
           <div class="col-4 d-flex flex-column align-items-center justify-content-center">
@@ -20,7 +23,7 @@
           </div>
           <div class="col-4 d-flex flex-column align-items-center justify-content-center">
             <span class="d-block">IMBd</span>
-            <span class="d-blcok">??/10.0</span>
+            <span class="d-block">{{ movie.imdbRating || "??"}}/10.0</span>
           </div>
           <div class="col-4 d-flex flex-column align-items-center justify-content-center">
             <span class="d-block">Trailer</span>
