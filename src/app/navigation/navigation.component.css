@@ -13,6 +13,16 @@
   font-weight: 900;
 }
 
+#nav-search-input {
+  border-radius: 30px;
+  width: 35%;
+  max-height: 30px;
+}
+
+input[type="text" i] {
+    padding: 1px 10px;
+}
+
 a {
   color: #FEFEFA !important;
 }

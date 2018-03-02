@@ -63,7 +63,9 @@ export class UsersService {
   }
 
   getUser() {
-    if (JSON.parse(localStorage.getItem('Prince Picks'))) { return this.user = JSON.parse(localStorage.getItem('Prince Picks')).username; }
+    if (JSON.parse(localStorage.getItem('Prince Picks'))) {
+      return this.user = JSON.parse(localStorage.getItem('Prince Picks')).username;
+    }
     return null;
   }
 

@@ -2,9 +2,10 @@
   <h1 id="main-h1" class="d-flex justify-content-center align-items-center">
     PRINCE PICKS
   </h1>
-  <nav class="d-flex justify-content-between">
-  	<a routerLink="/" class="d-flex align-items-center p-2">Home</a>
-  	<div *ngIf="this.usersService.getUser(); else loginBlock" href="#" class="p-2 ml-3 d-flex">
+  <nav class="d-flex justify-content-start align-items-center">
+  	<a routerLink="/" class="d-flex align-items-center p-2 mr-3">Home</a>
+    <input id="nav-search-input" type="text" placeholder="Search Movies..." />
+  	<div *ngIf="this.usersService.getUser(); else loginBlock" href="#" class="p-2 mr-3 ml-auto d-flex">
       <p class="mb-0 align-middle d-inline-block">Welcome</p>
       <div ngbDropdown class="d-inline-block">
         <button class="btn dropdown-toggle" type="button" id="navDropdown" ngbDropdownToggle>
