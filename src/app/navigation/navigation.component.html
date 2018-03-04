@@ -4,7 +4,21 @@
   </h1>
   <nav class="d-flex justify-content-start align-items-center">
   	<a routerLink="/" class="d-flex align-items-center p-2 mr-3">Home</a>
-    <input id="nav-search-input" type="text" placeholder="Search Movies..." />
+    <div id="search-bar">
+      <input #basicSearch (keyup)="searchTerms$.next(basicSearch.value)" id="nav-search-input" type="text" placeholder="Search Movies..." />
+      <ul *ngIf="results" class="w-50">
+        <li *ngFor="let result of results">
+          <a class='d-flex'>
+            <div class="container-fluid w-50">
+              <img *ngIf="result.poster; else mockPosterBlock" class="img-fluid" src="{{ result.poster }}" alt="{{result.movieTitle}}-poster" />
+              <ng-template #mockPosterBlock>
+                <img class="img-fluid" src="../../assets/images/mock-poster.jpg" alt="{{result.movieTitle}}-poster" />
+              </ng-template>
+            </div>
+            <p>{{ result.movieTitle }}</p>
+          </a>
+      </ul>
+    </div>
   	<div *ngIf="this.usersService.getUser(); else loginBlock" href="#" class="p-2 mr-3 ml-auto d-flex">
       <p class="mb-0 align-middle d-inline-block">Welcome</p>
       <div ngbDropdown class="d-inline-block">

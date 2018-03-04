@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel, RoutesRecognized } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { Subject } from 'rxjs/Subject';
 
 import { User } from '../classes/user';
 import { UsersService } from '../users.service';
 import { MessageService } from '../message.service';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-navigation',
@@ -14,9 +16,13 @@ import { MessageService } from '../message.service';
 })
 export class NavigationComponent implements OnInit {
 
+  results: Object;
+  searchTerms$ = new Subject<string>()
+
   constructor(
   	private usersService: UsersService,
     private messageService: MessageService,
+    private searchService: SearchService,
     private router: Router
   ) { 
   		this.router.events
@@ -24,6 +30,11 @@ export class NavigationComponent implements OnInit {
             	filter(event => event instanceof NavigationStart)
         	)
         	.subscribe((event:NavigationStart) => this.messageService.clear())
+
+      this.searchService.search(this.searchTerms$)
+        .subscribe(results => {
+          this.results = results
+        }) 
     }
 
   ngOnInit() {

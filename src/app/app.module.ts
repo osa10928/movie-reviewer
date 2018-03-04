@@ -20,6 +20,7 @@ import { MessageService } from './message.service';
 import { TitleCasePipe } from './titleCase.pipe';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AdminComponent } from './admin/admin.component';
+import { SearchService } from './search.service';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { AdminComponent } from './admin/admin.component';
   providers: [
     MovieService,
     UsersService,
-    MessageService
+    MessageService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })

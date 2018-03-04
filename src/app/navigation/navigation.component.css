@@ -13,9 +13,20 @@
   font-weight: 900;
 }
 
+#search-bar {
+  width: 35%;
+}
+
+#search-bar ul {
+  list-style: none;
+  margin: 0;
+  -webkit-margin-before: .2em;
+  -webkit-margin-after: .2em;
+  -webkit-padding-start: 0px;
+}
+
 #nav-search-input {
   border-radius: 30px;
-  width: 35%;
   max-height: 30px;
 }
 
