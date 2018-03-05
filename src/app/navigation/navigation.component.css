@@ -23,6 +23,20 @@
   -webkit-margin-before: .2em;
   -webkit-margin-after: .2em;
   -webkit-padding-start: 0px;
+  position: absolute;
+  top: 10.8rem;
+  left: 4.7rem;
+  z-index: 1000;
+  display: block;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.15);
+  box-sizing: border-box;
+  width: 35%;
+}
+
+#search-bar ul li:hover {
+  background-color: #E2DFDF;
 }
 
 #nav-search-input {
@@ -43,14 +57,17 @@ a {
   color: white;
 }
 
-p {
+#search-bar ul  li p {
   border: 1px solid transparent;
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
   border-radius: .25rem;
+  color: black !important;
 }
 
 .dropdown-item {
   cursor: pointer;
+}
+
+.nav-poster {
+  width: 100%;
 }

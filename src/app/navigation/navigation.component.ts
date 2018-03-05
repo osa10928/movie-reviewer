@@ -18,6 +18,7 @@ export class NavigationComponent implements OnInit {
 
   results: Object;
   searchTerms$ = new Subject<string>()
+  navSearch:string = "";
 
   constructor(
   	private usersService: UsersService,
@@ -29,7 +30,18 @@ export class NavigationComponent implements OnInit {
         	.pipe(
             	filter(event => event instanceof NavigationStart)
         	)
-        	.subscribe((event:NavigationStart) => this.messageService.clear())
+        	.subscribe((event:NavigationStart) => {
+            this.messageService.clear()
+            this.clearSearchNav()
+          })
+
+      this.router.events
+          .pipe(
+              filter(event => event instanceof NavigationError)
+          )
+          .subscribe((event:NavigationError) => {
+            console.log(event)
+          })
 
       this.searchService.search(this.searchTerms$)
         .subscribe(results => {
@@ -56,6 +68,10 @@ export class NavigationComponent implements OnInit {
         message => this.messageService.add(message.success),
         error => this.messageService.add(error.message)
       )
+  }
+
+  clearSearchNav() {
+    this.navSearch = ""
   }
 
 }

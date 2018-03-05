@@ -5,22 +5,22 @@
   <nav class="d-flex justify-content-start align-items-center">
   	<a routerLink="/" class="d-flex align-items-center p-2 mr-3">Home</a>
     <div id="search-bar">
-      <input #basicSearch (keyup)="searchTerms$.next(basicSearch.value)" id="nav-search-input" type="text" placeholder="Search Movies..." />
-      <ul *ngIf="results" class="w-50">
+      <input #basicSearch (keyup)="searchTerms$.next(basicSearch.value)" [(ngModel)]="navSearch" id="nav-search-input" class="w-100" type="text" placeholder="Search Movies..." />
+      <ul *ngIf="results && basicSearch.value" class="">
         <li *ngFor="let result of results">
-          <a class='d-flex'>
-            <div class="container-fluid w-50">
-              <img *ngIf="result.poster; else mockPosterBlock" class="img-fluid" src="{{ result.poster }}" alt="{{result.movieTitle}}-poster" />
+          <a routerLink="/movies/{{ result.movieTitle }}/{{ result.year }}" class='row justify-content-around'>
+            <div class="col-4 mx-auto pl-2 pr-2">
+              <img *ngIf="result.poster; else mockPosterBlock" class="img-fluid nav-poster" src="{{ result.poster }}" alt="{{result.movieTitle}}-poster" />
               <ng-template #mockPosterBlock>
-                <img class="img-fluid" src="../../assets/images/mock-poster.jpg" alt="{{result.movieTitle}}-poster" />
+                <img class="img-fluid nav-poster" src="../../assets/images/mock-poster.jpg" alt="{{result.movieTitle}}-poster" />
               </ng-template>
             </div>
-            <p>{{ result.movieTitle }}</p>
+            <p class="col-8 mx-auto mb-auto mt-auto pl-2 pr-2">{{ result.movieTitle }}</p>
           </a>
       </ul>
     </div>
   	<div *ngIf="this.usersService.getUser(); else loginBlock" href="#" class="p-2 mr-3 ml-auto d-flex">
-      <p class="mb-0 align-middle d-inline-block">Welcome</p>
+      <p class="mb-0 align-middle d-inline-block mt-auto mb-auto">Welcome</p>
       <div ngbDropdown class="d-inline-block">
         <button class="btn dropdown-toggle" type="button" id="navDropdown" ngbDropdownToggle>
           {{ this.usersService.getUser() | TitleCasePipe }}

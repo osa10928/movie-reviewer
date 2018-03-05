@@ -24,12 +24,12 @@ export class MovieReviewComponent implements OnInit {
   }
 
   getMovie(): void {
-    const movieTitle = this.route.snapshot.paramMap.get('movieTitle');
-    const year = +this.route.snapshot.paramMap.get('year');
-    this.movieService.getMovie(movieTitle, year)
-      .subscribe(movie => {
-        this.movie = movie
-      })
+    this.route.params.subscribe(params => {
+      this.movieService.getMovie(params['movieTitle'], params['year'])
+        .subscribe(movie => {
+          this.movie = movie
+        })
+    })
   }
 
 }
