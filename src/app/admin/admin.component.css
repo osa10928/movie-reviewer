@@ -13,3 +13,14 @@ header {
   color: white;
   font-size: 1em;
 }
+
+form {
+  max-height: 1500px;
+  -webkit-transition: max-height 1.5s linear;
+  transition: max-height 1.5s linear;
+}
+
+form.isHidden {
+  max-height: 0px;
+  overflow: hidden;
+}

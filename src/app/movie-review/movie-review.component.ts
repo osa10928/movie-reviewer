@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Movie } from '../classes/movie';
 import { MovieService } from '../movie.service';
+import { MessageService } from '../message.service';
+
 
 @Component({
   selector: 'app-movie-review',
@@ -16,6 +18,7 @@ export class MovieReviewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
+    private messageService: MessageService,
     private location: Location
   ) { }
 
@@ -26,9 +29,15 @@ export class MovieReviewComponent implements OnInit {
   getMovie(): void {
     this.route.params.subscribe(params => {
       this.movieService.getMovie(params['movieTitle'], params['year'])
-        .subscribe(movie => {
-          this.movie = movie
-        })
+        .subscribe(
+          movie => {
+            this.movie = movie
+          },
+          error => {
+            console.log(error)
+            this.messageService.add(error.error);
+          }
+        )
     })
   }
 

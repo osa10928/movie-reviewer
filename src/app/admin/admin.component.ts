@@ -14,6 +14,8 @@ import { MessageService } from '../message.service';
 })
 export class AdminComponent implements OnInit {
 
+  isAddHidden:boolean = true;
+
   constructor(
   	private movieService: MovieService,
   	private messageService: MessageService,
@@ -39,6 +41,10 @@ export class AdminComponent implements OnInit {
   				this.messageService.add(error.error)
   			}
   		)
+  }
+
+  changeIsAddHidden(): void {
+    this.isAddHidden ? this.isAddHidden = false : this.isAddHidden = true
   }
 
 }

@@ -5,10 +5,10 @@
 		</h2>
 	</header>
 	<section id="add-movie-section" class="mt-4 d-flex flex-column align-items-center justify-content-center">
-		<button class="btn" type="button" id="add-movie-button">
+		<button (click)="changeIsAddHidden()" class="btn mb-4" type="button" id="add-movie-button">
 			Add Movie Review
 		</button>
-		<form (ngSubmit)="onSubmit(movieTitle.value, year.value, imdb.value, trailer.value, reviewTitle.value, reviewClip.value, reviewSummary.value, reviewScore.value, bestWeek.checked, bestMonth.checked)" #reviewForm="ngForm" class="p-4">
+		<form (ngSubmit)="onSubmit(movieTitle.value, year.value, imdb.value, trailer.value, reviewTitle.value, reviewClip.value, reviewSummary.value, reviewScore.value, bestWeek.checked, bestMonth.checked)" #reviewForm="ngForm" class="pl-4 pr-4 isHidden" [class.isHidden]="isAddHidden">
 			<div class="form-group">
 				<label for="movieTitle">Movie Title</label>
 				<input #movieTitle type="text" class="form-control" [(ngModel)]="reviewForm.movieTitle" name="movieTitle" required />
