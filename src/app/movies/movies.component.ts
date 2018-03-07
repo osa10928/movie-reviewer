@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 import { Movie } from '../classes/movie';
 import { MovieService } from '../movie.service';
@@ -16,7 +17,8 @@ export class MoviesComponent implements OnInit {
 
   constructor(
     private movieService: MovieService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,11 @@ export class MoviesComponent implements OnInit {
           this.messageService.add(error.error)
         }
       );
+  }
+
+  editMovie(movie) {
+    this.movieService.editedMovie = movie;
+    this.router.navigate(['/admin'])
   }
 
 }

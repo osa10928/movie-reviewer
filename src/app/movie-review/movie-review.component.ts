@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Movie } from '../classes/movie';
 import { MovieService } from '../movie.service';
@@ -17,6 +17,7 @@ export class MovieReviewComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private movieService: MovieService,
     private messageService: MessageService,
     private location: Location
@@ -39,6 +40,11 @@ export class MovieReviewComponent implements OnInit {
           }
         )
     })
+  }
+
+  editMovie(movie) {
+    this.movieService.editedMovie = movie;
+    this.router.navigate(['/admin'])
   }
 
 }

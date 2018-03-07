@@ -10,6 +10,8 @@ import { Movies } from './mock-movies';
 @Injectable()
 export class MovieService {
 
+  editedMovie:Movie;
+
   constructor(
       private http: HttpClient
    ) { }

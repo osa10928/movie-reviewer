@@ -17,7 +17,7 @@ import { SearchService } from '../search.service';
 export class AdminComponent implements OnInit {
 
   isAddHidden:boolean = true;
-  editMovie:Movie;
+  editMovie:Movie = this.movieService.editedMovie;
   results: Object;
   searchTerms$ = new Subject<string>()
   adminSearch:string = "";
@@ -31,7 +31,6 @@ export class AdminComponent implements OnInit {
     this.searchService.search(this.searchTerms$)
         .subscribe(results => {
           this.results = results
-          console.log(this.results)
         }) 
   }
 
@@ -63,7 +62,6 @@ export class AdminComponent implements OnInit {
           this.messageService.add("Movie Was Successfully edited!")
           let movieTitle = movie['movieTitle'], year = movie['year'];
           setTimeout(() => {
-            console.log('in')
             this.router.navigate([`/movies/${movieTitle}/${year}`])
           }, 5000)
         },
@@ -86,6 +84,7 @@ export class AdminComponent implements OnInit {
 
   clearMovie():void {
     this.editMovie = null;
+    this.movieService.editedMovie = null;
   }
 
 
