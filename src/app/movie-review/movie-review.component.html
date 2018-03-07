@@ -1,9 +1,9 @@
 <main *ngIf="movie" class="d-flex flex-column align-items-center justify-content-center p-2">
   <article class="movie-reviews-container d-flex flex-column w-100">
     <section id="opening-content">
-      <header class="movie-headers text-center d-flex align-items-center">
-      <aside (click)="editMovie(movie)" class="w-25">Edit</aside>
-      <div>
+      <header class="movie-headers text-center row ml-0 mr-0 align-items-center justify-content-center">
+      <aside (click)="editMovie(movie)" class="w-25 col-2 pl-0 pr-0 mx-auto">Edit</aside>
+      <div class="col-8">
         <h4 routerLink="/movies/{{ movie.movieTitle }}/{{ movie.year }}">
           {{ movie.movieTitle }}
         </h4>
@@ -11,7 +11,7 @@
           {{ movie.year }}
         </h5>
       </div>
-      <aside class="w-25">Delete</aside>
+      <aside class="w-25 col-2 pl-0 pr-0 mx-auto">Delete</aside>
     </header>
       <div class="movie-reviews-content d-flex flex-colum p-3">
         <div class="movie-info row align-items-center">

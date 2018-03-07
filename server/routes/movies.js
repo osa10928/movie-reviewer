@@ -45,8 +45,13 @@ const movieRouter = (passport) => {
 			.catch(err => {console.log(err)})
 	})
 
+	router.delete("/deletemovie", (req, res, next) => {
+		console.log(req.query)
+	})
+
 	router.post("/editmovie", (req, res, next) => {
-		createMovieObject(req.body)
+		oldMovie = req.body[1]
+		createMovieObject(req.body[0])
 			.then(movie => {
 				let keys = Object.keys(movie._doc), editMovie = {}
 				for (let key of keys) {
@@ -54,7 +59,7 @@ const movieRouter = (passport) => {
 						editMovie[key] = movie[key]
 					}
 				}
-				let query = {'imdb':movie['imdb']},
+				let query = {'imdb':oldMovie['imdb']},
 					options = {'upsert':false, 'overwrite':true}
 				Movie.findOneAndUpdate(query, editMovie, options, function(err, movie) {
 					if (err) return next(err);

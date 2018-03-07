@@ -51,10 +51,27 @@ export class MovieService {
     const options = {
       withCredentials: true
     }
-    const credentials = movie
+    const credentials = [movie, this.editedMovie]
     return this.http.post("movies/editmovie", credentials, options)
       .pipe(
         map((res:any) => {
+          return <Movie> res
+        })
+      )
+  }
+
+  deleteMovie(movie) {
+    const params = new HttpParams()
+      .set('imdb', movie['imdb'])
+      .set('movieTitle', movie['movieTitle'])
+    const options = {
+      withCredential: true,
+      params: params
+    }
+    return this.http.delete("movies/deletemovie", options)
+      .pipe(
+        map((res:any) => {
+          console.log(res)
           return <Movie> res
         })
       )

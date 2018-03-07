@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule }   from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
@@ -26,7 +26,8 @@ export class AdminComponent implements OnInit {
   	private movieService: MovieService,
   	private messageService: MessageService,
     private searchService: SearchService,
-  	private router: Router
+  	private router: Router,
+    private modalService: NgbModal
   ) {
     this.searchService.search(this.searchTerms$)
         .subscribe(results => {
@@ -46,7 +47,7 @@ export class AdminComponent implements OnInit {
   				setTimeout(() => {
   					console.log('in')
   					this.router.navigate([`/movies/${movieTitle}/${year}`])
-  				}, 5000)
+  				}, 3000)
   			},
   			error => {
   				console.log(error)
@@ -59,11 +60,27 @@ export class AdminComponent implements OnInit {
     this.movieService.editMovie(movieData)
       .subscribe(
         movie => {
-          this.messageService.add("Movie Was Successfully edited!")
+          this.messageService.add(`${movie['movieTitle']} Was Successfully edited!`)
           let movieTitle = movie['movieTitle'], year = movie['year'];
           setTimeout(() => {
             this.router.navigate([`/movies/${movieTitle}/${year}`])
-          }, 5000)
+          }, 3000)
+        },
+        error => {
+          console.log(error)
+          this.messageService.add(error.error)
+        }
+      )
+  }
+
+  onDeleteSubmit(movie) {
+    this.movieService.deleteMovie(movie)
+      .subscribe(
+        movie => {
+          this.messageService.add(`${movie['movieTitle']} was successfully deleted!`)
+          setTimeout(() => {
+            this.router.navigate(['/'])
+          }, 3000)
         },
         error => {
           console.log(error)
@@ -78,6 +95,7 @@ export class AdminComponent implements OnInit {
 
   setEditMovie(result) {
     this.editMovie = result
+    this.movieService.editedMovie = this.editMovie
     this.adminSearch = ""
     console.log(this.editMovie)
   }
@@ -85,6 +103,18 @@ export class AdminComponent implements OnInit {
   clearMovie():void {
     this.editMovie = null;
     this.movieService.editedMovie = null;
+  }
+
+  open(confirmDelete) {
+    this.modalService.open(confirmDelete).result.then(
+      (result) => {
+        if (result === 'delete click') {
+          this.onDeleteSubmit(this.editMovie)
+        }
+      },
+      (reason) => {
+      }
+    )
   }
 
 

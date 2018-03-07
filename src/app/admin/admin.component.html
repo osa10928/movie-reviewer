@@ -27,7 +27,7 @@
 
 			<div class="form-group">
 				<label for="imdb">IMDb ID</label>
-				<input #imdb type="text" class="form-control" name="imdb" />
+				<input #imdb type="text" class="form-control" [(ngModel)]="reviewForm.year" name="imdb" required />
 			</div>
 
 			<div class="form-group">
@@ -68,7 +68,7 @@
 				<input #bestMonth type="checkbox" class="form-control" value="bestMonth" name= "bestMonth"/>
 			</div>
 
-			<button type="submit" class="btn btn-success" [disabled]="!reviewForm.form.valid">Add Movie Review</button>
+			<button type="submit" class="btn btn-success mx-auto" [disabled]="!reviewForm.form.valid">Add Movie Review</button>
 
 		</form>
 	</section>
@@ -93,12 +93,15 @@
       		</ul>
    		</div>
    		<form *ngIf="editMovie" (ngSubmit)="onEditSubmit(editMovieTitle.value, editYear.value, editImdb.value, editTrailer.value, editReviewTitle.value, editReviewClip.value, editReviewSummary.value, editReviewScore.value, editBestWeek.checked, editBestMonth.checked)" #editReviewForm="ngForm" class="pl-4 pr-4 isHidden" [class.isHidden]="!editMovie">
-   			<a (click)="clearMovie()" style="color:black !important;text-decoration:underline !important;cursor:pointer" class="mb-3 mt-3 d-block mx-auto text-center">
+   			<h4 class="mt-3 mx-auto text-center">
+   				**Editing: {{ editMovie.movieTitle }}**
+   			</h4>
+   			<a (click)="clearMovie()" style="color:black !important;text-decoration:underline !important;cursor:pointer" class="mb-3 mt-1 d-block mx-auto text-center">
    				Remove Selected Movie
    			</a>
 			<div class="form-group">
 				<label for="movieTitle">Edit Movie Title</label>
-				<input #editMovieTitle type="text" class="form-control" [(ngModel)]="editMovie.movieTitle" name="movieTitle" required />
+				<input #editMovieTitle type="text" class="form-control" [ngModel]="editMovie.movieTitle" name="movieTitle" required />
 				<div class="mt-1 required">
 					*required
 				</div>
@@ -106,7 +109,7 @@
 
 			<div class="form-group">
 				<label for="year">Edit Year</label>
-				<input #editYear type="number" class="form-control" [(ngModel)]="editMovie.year" name="year" required />
+				<input #editYear type="number" class="form-control" [ngModel]="editMovie.year" name="year" required />
 				<div class="mt-1 required">
 					*required
 				</div>
@@ -114,7 +117,7 @@
 
 			<div class="form-group">
 				<label for="imdb">Edit IMDb ID</label>
-				<input #editImdb type="text" class="form-control" name="imdb" [(ngModel)]="editMovie.imdb" required="" />
+				<input #editImdb type="text" class="form-control" name="imdb" [ngModel]="editMovie.imdb" required="" />
 				<div class="mt-1 required">
 					*required
 				</div>
@@ -158,8 +161,30 @@
 				<input #editBestMonth type="checkbox" class="form-control" value="bestMonth" name="bestMonth"/>
 			</div>
 
-			<button type="submit" class="btn btn-success" [disabled]="!editReviewForm.form.valid">Edit Movie Review</button>
+			<button type="submit" class="btn btn-success mx-auto" [disabled]="!editReviewForm.form.valid">Edit Movie Review</button>
+
+			<button (click)="open(confirmDelete)" type="button" class="btn btn-danger mx-auto">Delete Movie</button>
 
 		</form>
 	</section>
+	<ng-template #confirmDelete let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<h4 class="modal-title">Confirm Delete
+			</h4>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<p>Are you sure you want to delete this movie?</p>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark" (click)="c('cancel click')">
+				Cancel
+			</button>
+			<button type="button" class="btn btn-danger" (click)="c('delete click')">
+				Delete
+			</button>
+		</div>
+	</ng-template>
 </main>
