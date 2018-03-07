@@ -46,7 +46,12 @@ const movieRouter = (passport) => {
 	})
 
 	router.delete("/deletemovie", (req, res, next) => {
-		console.log(req.query)
+		let query = {'imdb':req.query['imdb'], 'movieTitle':req.query["movieTitle"]}
+		Movie.findOneAndRemove(query, function(err, doc) {
+			if (err) return next(err);
+			if (doc) return res.json(doc);
+			res.status(422).send("This movie does not exist in the database")
+		})
 	})
 
 	router.post("/editmovie", (req, res, next) => {

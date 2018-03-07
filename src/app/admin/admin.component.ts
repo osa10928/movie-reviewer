@@ -76,8 +76,8 @@ export class AdminComponent implements OnInit {
   onDeleteSubmit(movie) {
     this.movieService.deleteMovie(movie)
       .subscribe(
-        movie => {
-          this.messageService.add(`${movie['movieTitle']} was successfully deleted!`)
+        res => {
+          this.messageService.add(`${res['movieTitle']} was successfully deleted!`)
           setTimeout(() => {
             this.router.navigate(['/'])
           }, 3000)

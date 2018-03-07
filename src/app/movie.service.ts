@@ -72,7 +72,7 @@ export class MovieService {
       .pipe(
         map((res:any) => {
           console.log(res)
-          return <Movie> res
+          return res as Observable<object>
         })
       )
   }
