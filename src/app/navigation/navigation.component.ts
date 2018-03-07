@@ -35,14 +35,6 @@ export class NavigationComponent implements OnInit {
             this.clearSearchNav()
           })
 
-      this.router.events
-          .pipe(
-              filter(event => event instanceof NavigationError)
-          )
-          .subscribe((event:NavigationError) => {
-            console.log(event)
-          })
-
       this.searchService.search(this.searchTerms$)
         .subscribe(results => {
           this.results = results

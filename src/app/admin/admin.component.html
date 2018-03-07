@@ -8,11 +8,11 @@
 		<button (click)="changeIsAddHidden()" class="btn mb-4" type="button" id="add-movie-button">
 			Add Movie Review
 		</button>
-		<form (ngSubmit)="onSubmit(movieTitle.value, year.value, imdb.value, trailer.value, reviewTitle.value, reviewClip.value, reviewSummary.value, reviewScore.value, bestWeek.checked, bestMonth.checked)" #reviewForm="ngForm" class="pl-4 pr-4 isHidden" [class.isHidden]="isAddHidden">
+		<form (ngSubmit)="onAddSubmit(movieTitle.value, year.value, imdb.value, trailer.value, reviewTitle.value, reviewClip.value, reviewSummary.value, reviewScore.value, bestWeek.checked, bestMonth.checked)" #reviewForm="ngForm" class="pl-4 pr-4 isHidden" [class.isHidden]="isAddHidden">
 			<div class="form-group">
 				<label for="movieTitle">Movie Title</label>
 				<input #movieTitle type="text" class="form-control" [(ngModel)]="reviewForm.movieTitle" name="movieTitle" required />
-				<div class="mt-1" style="color:red">
+				<div class="mt-1 required">
 					*required
 				</div>
 			</div>
@@ -20,7 +20,7 @@
 			<div class="form-group">
 				<label for="year">Year</label>
 				<input #year type="number" class="form-control" [(ngModel)]="reviewForm.year" name="year" required />
-				<div class="mt-1" style="color:red">
+				<div class="mt-1 required">
 					*required
 				</div>
 			</div>
@@ -53,7 +53,7 @@
 			<div class="form-group">
 				<label for="reviewScore">Review Score</label>
 				<input #reviewScore type="number" step=0.1 class="form-control" [(ngModel)]="reviewForm.reviewScore" name="reviewScore" required />
-				<div class="mt-1" style="color:red">
+				<div class="mt-1 required">
 					*required
 				</div>
 			</div>
@@ -69,6 +69,96 @@
 			</div>
 
 			<button type="submit" class="btn btn-success" [disabled]="!reviewForm.form.valid">Add Movie Review</button>
+
+		</form>
+	</section>
+	<section id="edit-or-delete" class="mt-4 mb-4 pt-4 pb-4 d-flex flex-column align-items-center justify-content-center">
+		<button class="btn mb-4">
+			Edit or Delete Movie
+		</button>
+		<div id="edit-search-bar">
+      		<input #editSearch (keyup)="searchTerms$.next(editSearch.value)" [(ngModel)]="adminSearch" id="edit-search-input" class="w-100" type="text" placeholder="Search Movies..." />
+      		<ul *ngIf="results && editSearch.value" class="">
+        		<li *ngFor="let result of results">
+          			<a (click)="setEditMovie(result)" class='row justify-content-around mr-0 ml-0'>
+            			<div class="col-3 mx-auto pl-1 pr-1">
+              				<img *ngIf="result.poster; else mockPosterBlock" class="img-fluid w-100" src="{{ result.poster }}" alt="{{result.movieTitle}}-poster" />
+              				<ng-template #mockPosterBlock>
+                				<img class="img-fluid w-100" src="../../assets/images/mock-poster.jpg" alt="{{result.movieTitle}}-poster" />
+              				</ng-template>
+            			</div>
+            			<p class="col-9 mx-auto mb-auto mt-auto pl-2 pr-2 text-center">{{ result.movieTitle }}</p>
+          			</a>
+        		</li>
+      		</ul>
+   		</div>
+   		<form *ngIf="editMovie" (ngSubmit)="onEditSubmit(editMovieTitle.value, editYear.value, editImdb.value, editTrailer.value, editReviewTitle.value, editReviewClip.value, editReviewSummary.value, editReviewScore.value, editBestWeek.checked, editBestMonth.checked)" #editReviewForm="ngForm" class="pl-4 pr-4 isHidden" [class.isHidden]="!editMovie">
+   			<a (click)="clearMovie()" style="color:black !important;text-decoration:underline !important;cursor:pointer" class="mb-3 mt-3 d-block mx-auto text-center">
+   				Remove Selected Movie
+   			</a>
+			<div class="form-group">
+				<label for="movieTitle">Edit Movie Title</label>
+				<input #editMovieTitle type="text" class="form-control" [(ngModel)]="editMovie.movieTitle" name="movieTitle" required />
+				<div class="mt-1 required">
+					*required
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="year">Edit Year</label>
+				<input #editYear type="number" class="form-control" [(ngModel)]="editMovie.year" name="year" required />
+				<div class="mt-1 required">
+					*required
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="imdb">Edit IMDb ID</label>
+				<input #editImdb type="text" class="form-control" name="imdb" [(ngModel)]="editMovie.imdb" required="" />
+				<div class="mt-1 required">
+					*required
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="trailer">Edit Youtube Trailer</label>
+				<input #editTrailer type="text" class="form-control" name="trailer" value="{{ editMovie.trailer }}" />
+			</div>
+
+			<div class="form-group">
+				<label for="Review Title">Edit Review Title</label>
+				<input #editReviewTitle type="text" class="form-control" name="reviewTitle" value="{{ editMovie.reviewTitle }}" />
+			</div>
+
+			<div class="form-group">
+				<label for="reviewClip"></label>Edit Youtube Review Clip
+				<input #editReviewClip type="text" class="form-control" name="reviewClip" value="{{ editMovie.reviewClip }}" />
+			</div>
+
+			<div class="form-group">
+				<label for="reviewSummary">Edit Review Summary</label>
+				<textarea #editReviewSummary type="textarea" class="form-control" name="reviewSummary" value="{{ editMovie.reviewSummary }}"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="reviewScore">Edit Review Score</label>
+				<input #editReviewScore type="number" step=0.1 class="form-control" [(ngModel)]="editMovie.reviewScore" name="reviewScore" required />
+				<div class="mt-1 required">
+					*required
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="bestWeek">Make Feature of the Week</label>
+				<input #editBestWeek type="checkbox" class="form-control" value="bestWeek" name="bestWeek" />
+			</div>
+
+			<div class="form-group">
+				<label for="bestMonth">Make Feature of the Month</label>
+				<input #editBestMonth type="checkbox" class="form-control" value="bestMonth" name="bestMonth"/>
+			</div>
+
+			<button type="submit" class="btn btn-success" [disabled]="!editReviewForm.form.valid">Edit Movie Review</button>
 
 		</form>
 	</section>

@@ -45,4 +45,17 @@ export class MovieService {
       )
   }
 
+  editMovie(movie:object) {
+    const options = {
+      withCredentials: true
+    }
+    const credentials = movie
+    return this.http.post("movies/editmovie", credentials, options)
+      .pipe(
+        map((res:any) => {
+          return <Movie> res
+        })
+      )
+  }
+
 }

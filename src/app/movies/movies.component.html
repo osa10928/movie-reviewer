@@ -1,12 +1,16 @@
 <main class="d-flex flex-column align-items-center justify-content-center">
   <article *ngFor="let movie of movies" class="movie-reviews-container d-flex flex-column w-100 p-2">
-    <header class="movie-headers text-center">
-      <h4 routerLink="/movies/{{ movie.movieTitle }}/{{ movie.year }}">
-        {{ movie.movieTitle }}
-      </h4>
-      <h5>
-        {{ movie.year }}
-      </h5>
+    <header class="movie-headers text-center d-flex align-items-center">
+      <aside class="w-25">Edit</aside>
+      <div>
+        <h4 routerLink="/movies/{{ movie.movieTitle }}/{{ movie.year }}">
+          {{ movie.movieTitle }}
+        </h4>
+        <h5>
+          {{ movie.year }}
+        </h5>
+      </div>
+      <aside class="w-25">Delete</aside>
     </header>
     <div class="movie-reviews-content d-flex flex-colum p-3">
       <div class="movie-info row align-items-center">

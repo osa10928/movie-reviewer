@@ -8,15 +8,16 @@
       <input #basicSearch (keyup)="searchTerms$.next(basicSearch.value)" [(ngModel)]="navSearch" id="nav-search-input" class="w-100" type="text" placeholder="Search Movies..." />
       <ul *ngIf="results && basicSearch.value" class="">
         <li *ngFor="let result of results">
-          <a routerLink="/movies/{{ result.movieTitle }}/{{ result.year }}" class='row justify-content-around'>
-            <div class="col-4 mx-auto pl-2 pr-2">
-              <img *ngIf="result.poster; else mockPosterBlock" class="img-fluid nav-poster" src="{{ result.poster }}" alt="{{result.movieTitle}}-poster" />
+          <a routerLink="/movies/{{ result.movieTitle }}/{{ result.year }}" class='row justify-content-around mr-0 ml-0'>
+            <div class="col-3 mx-auto pl-2 pr-2">
+              <img *ngIf="result.poster; else mockPosterBlock" class="img-fluid w-100" src="{{ result.poster }}" alt="{{result.movieTitle}}-poster" />
               <ng-template #mockPosterBlock>
-                <img class="img-fluid nav-poster" src="../../assets/images/mock-poster.jpg" alt="{{result.movieTitle}}-poster" />
+                <img class="img-fluid w-100" src="../../assets/images/mock-poster.jpg" alt="{{result.movieTitle}}-poster" />
               </ng-template>
             </div>
-            <p class="col-8 mx-auto mb-auto mt-auto pl-2 pr-2">{{ result.movieTitle }}</p>
+            <p class="col-9 mx-auto mb-auto mt-auto pl-2 pr-2 text-center">{{ result.movieTitle }}</p>
           </a>
+        </li>
       </ul>
     </div>
   	<div *ngIf="this.usersService.getUser(); else loginBlock" href="#" class="p-2 mr-3 ml-auto d-flex">

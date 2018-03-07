@@ -17,10 +17,54 @@ header {
 form {
   max-height: 1500px;
   -webkit-transition: max-height 1.5s linear;
-  transition: max-height 1.5s linear;
+  transition: max-height 2s linear;
 }
 
 form.isHidden {
   max-height: 0px;
   overflow: hidden;
+}
+
+#edit-search-bar {
+  width: 50%;
+}
+
+#edit-search-bar ul {
+  list-style: none;
+  -webkit-padding-start: 0px;
+  display: block;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.15);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+#edit-search-bar ul li:hover {
+  background-color: #E2DFDF;
+  cursor: pointer;
+}
+
+#edit-search-input {
+  border-radius: 30px;
+  max-height: 30px;
+}
+
+input[type="text" i] {
+    padding: 1px 10px;
+}
+
+a {
+  color: #FEFEFA !important;
+}
+
+#edit-search-bar ul  li p {
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+  border-radius: .25rem;
+  color: black !important;
+}
+
+.required {
+  color: red;
 }

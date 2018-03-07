@@ -45,6 +45,25 @@ const movieRouter = (passport) => {
 			.catch(err => {console.log(err)})
 	})
 
+	router.post("/editmovie", (req, res, next) => {
+		createMovieObject(req.body)
+			.then(movie => {
+				let keys = Object.keys(movie._doc), editMovie = {}
+				for (let key of keys) {
+					if (key != '_id'){
+						editMovie[key] = movie[key]
+					}
+				}
+				let query = {'imdb':movie['imdb']},
+					options = {'upsert':false, 'overwrite':true}
+				Movie.findOneAndUpdate(query, editMovie, options, function(err, movie) {
+					if (err) return next(err);
+					//console.log(movie)
+					res.json(movie)
+				})
+			})
+	})
+
 	return router
 
 }
@@ -52,8 +71,8 @@ const movieRouter = (passport) => {
 
 function createMovieObject(data) {
 	let movie = new Movie();
-	const attributes = ["movieTitle", "year", "imdb", "trailer", "reviewTitle", "reviewClip", "reviewSumary", "reviewScore", "bestWeek", "bestMonth"];
-	for (let i=0;i<data.length;i++) {
+	const attributes = ["movieTitle", "year", "imdb", "trailer", "reviewTitle", "reviewClip", "reviewSummary", "reviewScore", "bestWeek", "bestMonth"];
+	for (let i=0;i<attributes.length;i++) {
   		movie[attributes[i]] = data[i];
   	}
   	movie['createdAt'] = Date.now();
