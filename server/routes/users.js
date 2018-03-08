@@ -13,10 +13,14 @@ const userRouter = (passport) => {
 
 		const email = req.body.email;
 		const password = req.body.password;
+		const picture = req.body.picture;
 
 		let user = new User();
 		user.local.email = email;
 		user.local.password = user.generateHash(password);
+		user.local.picture = picture;
+		email === "stephen" ? user.admin = true : user.admin = false;
+		// TODO: Get rid of above line in favor of populat when shipping project
 
 		user.save(err => {
 			console.log(user)
@@ -40,7 +44,13 @@ const userRouter = (passport) => {
 					return next(err)
 				}
 				console.log(user)
-				res.json(user)
+				let returnUser = {
+					username: req.user.local.email,
+					picture: req.user.local.picture,
+					admin: req.user.admin
+				}
+				console.log(returnUser)
+				res.json(returnUser)
 			})
 		})
 	})
@@ -79,7 +89,13 @@ const userRouter = (passport) => {
 					return next(err)
 				}
 			})
-			res.json(req.user)
+			let returnUser = {
+				username: req.user.local.email,
+				picture: req.user.local.picture,
+				admin: req.user.admin
+			}
+			console.log(returnUser)
+			res.json(returnUser)
 		})(req, res, next);
 	})
 

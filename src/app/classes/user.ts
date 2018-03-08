@@ -1,4 +1,5 @@
 export class User {
-  local: Object;
   username: string;
+  picture: string;
+  admin: boolean;
 }

@@ -6,7 +6,8 @@ const UserSchema = new mongoose.Schema({
 
 	local            : {
 		email        : { type:String, index: { unique:true } },
-		password     : { type:String }
+		password     : { type:String },
+        picture      : String
 	},
     facebook         : {
         id           : String,
@@ -26,7 +27,8 @@ const UserSchema = new mongoose.Schema({
         token        : String,
         email        : String,
         name         : String
-    }
+    },
+    admin            : Boolean
 })
 
 

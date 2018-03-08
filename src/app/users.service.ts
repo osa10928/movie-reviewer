@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators';
@@ -8,7 +8,7 @@ import { Http, RequestOptions, Response, RequestMethod } from '@angular/http';
 import { User } from './classes/user';
 
 @Injectable()
-export class UsersService {
+export class UsersService implements OnInit {
   user:User = null
 
   constructor(
@@ -24,7 +24,7 @@ export class UsersService {
   	return this.http.post(registerPath, credentials, options)
   	    .pipe(
   	    	map((res:any) => {
-            const user:User = {local: res.local, username: res.local.email}
+            const user:User = {username: res.username, picture: res.picture, admin: res.admin}
             return <User> user;
           })
   	    )
@@ -39,7 +39,8 @@ export class UsersService {
     return this.http.post(loginPath, credentials, options)
       .pipe(
         map((res:any) => {
-          const user:User = {local: res.local, username: res.local.email}
+          console.log(res)
+          const user:User = {username: res.username, picture: res.picture, admin: res.admin}
           return <User> user;
         })
       )
@@ -64,7 +65,7 @@ export class UsersService {
 
   getUser() {
     if (JSON.parse(localStorage.getItem('Prince Picks'))) {
-      return this.user = JSON.parse(localStorage.getItem('Prince Picks')).username;
+      return this.user = JSON.parse(localStorage.getItem('Prince Picks'));
     }
     return null;
   }

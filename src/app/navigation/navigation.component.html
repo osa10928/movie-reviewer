@@ -24,16 +24,16 @@
       <p class="mb-0 align-middle d-inline-block mt-auto mb-auto">Welcome</p>
       <div ngbDropdown class="d-inline-block">
         <button class="btn dropdown-toggle" type="button" id="navDropdown" ngbDropdownToggle>
-          {{ this.usersService.getUser() | TitleCasePipe }}
+          {{ this.usersService.user.username | TitleCasePipe }}
         </button>
         <div ngbDropdownMenu aria-labelledby="navDropdown">
-          <button routerLink="/admin" class="dropdown-item" href="#">Admin</button>
+          <button *ngIf="this.usersService.user.admin" routerLink="/admin" class="dropdown-item" href="#">Admin</button>
           <button (click)="this.logout()" class="dropdown-item" href="#">Logout</button>
         </div>
       </div>
     </div>
   	<ng-template #loginBlock>
-  		<a routerLink="/login" class="p-2">Login</a>
+  		<a routerLink="/login" class="p-2 mr-3 ml-auto">Login</a>
   	</ng-template>
   </nav>
 </header>
