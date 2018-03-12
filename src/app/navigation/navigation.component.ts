@@ -35,7 +35,7 @@ export class NavigationComponent implements OnInit {
             this.clearSearchNav()
           })
 
-      this.searchService.search(this.searchTerms$)
+      this.searchService.search(this.searchTerms$, 'movie')
         .subscribe(results => {
           this.results = results
         }) 

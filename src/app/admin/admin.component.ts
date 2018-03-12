@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 
 import { Movie } from '../classes/movie';
+import { User } from '../classes/user';
+import { UsersService } from '../users.service' 
 import { MovieService } from '../movie.service';
 import { MessageService } from '../message.service';
 import { SearchService } from '../search.service';
@@ -18,21 +20,31 @@ export class AdminComponent implements OnInit {
 
   isAddHidden:boolean = true;
   editMovie:Movie = this.movieService.editedMovie;
+  editUser:User = this.usersService.editUser;
   results: Object;
+  users: Object;
   searchTerms$ = new Subject<string>()
-  adminSearch:string = "";
+  userSearch$ = new Subject<string>()
+  movieSearch:string = "";
+  userSearch:string = "";
 
   constructor(
   	private movieService: MovieService,
   	private messageService: MessageService,
     private searchService: SearchService,
+    private usersService: UsersService,
   	private router: Router,
     private modalService: NgbModal
   ) {
-    this.searchService.search(this.searchTerms$)
+    this.searchService.search(this.searchTerms$, 'movie') 
         .subscribe(results => {
           this.results = results
-        }) 
+        })
+
+    this.searchService.search(this.userSearch$, 'user')
+      .subscribe(users => {
+        this.users = users
+      })
   }
 
   ngOnInit() {
@@ -96,13 +108,20 @@ export class AdminComponent implements OnInit {
   setEditMovie(result) {
     this.editMovie = result
     this.movieService.editedMovie = this.editMovie
-    this.adminSearch = ""
+    this.movieSearch = ""
     console.log(this.editMovie)
   }
 
   clearMovie():void {
     this.editMovie = null;
     this.movieService.editedMovie = null;
+  }
+
+  setEditUser(user) {
+    this.editUser = user
+    this.usersService.editUser = this.editUser
+    this.userSearch = ""
+    console.log(this.editMovie)
   }
 
   open(confirmDelete) {

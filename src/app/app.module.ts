@@ -5,23 +5,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
+import { environment } from '../environments/environment';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { AppComponent } from './app.component';
-import { MovieService } from './movie.service';
-import { UsersService } from './users.service';
+import { AdminModule } from './admin/admin.module';
 
-import { environment } from '../environments/environment';
+import { AppComponent } from './app.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './messages/messages.component';
-import { MessageService } from './message.service';
-import { TitleCasePipe } from './titleCase.pipe';
 import { NavigationComponent } from './navigation/navigation.component';
-import { AdminComponent } from './admin/admin.component';
-import { SearchService } from './search.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import { SearchService } from './search.service';
+import { MovieService } from './movie.service';
+import { UsersService } from './users.service';
+import { MessageService } from './message.service';
+
+import { TitleCasePipe } from './titleCase.pipe';
 
 @NgModule({
   declarations: [
@@ -32,15 +34,16 @@ import { SearchService } from './search.service';
     MessagesComponent,
     TitleCasePipe,
     NavigationComponent,
-    AdminComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    AdminModule,
     AppRoutingModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     NgbModule.forRoot(),
     HttpClientModule,
-    FormsModule,
     NgbDropdownModule.forRoot()
   ],
   providers: [

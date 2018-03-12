@@ -9,19 +9,25 @@ export class SearchService {
 
   constructor(private http: HttpClient) { }
 
-  search(terms: Observable<string>) {
-  	return terms.pipe(
+  search(terms: Observable<string> , searchType:string) {
+  	// the searchType variable will either be 'movie' or 'user'
+    return terms.pipe(
   		debounceTime(400),
   		distinctUntilChanged(),
-  		switchMap(terms => this.basicSearch(terms))
+  		switchMap(terms => {
+        if (searchType === 'movie') {
+          return this.basicSearch(terms, 'search/movies')
+        }
+        return this.basicSearch(terms, 'search/user')
+      })
   	)
   }
 
-  basicSearch(terms) {
+  basicSearch(terms, route) {
   	const params = new HttpParams()
         .set('terms', terms)
 
-  	return this.http.get('search/basic', {params})
+  	return this.http.get(route, {params})
   }
 
 }

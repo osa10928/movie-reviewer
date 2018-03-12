@@ -6,7 +6,7 @@ const Movie = require('../../models/movies.js');
 
 const searchRouter = () => {
 
-	router.get('/basic', (req, res, next) => {
+	router.get('/movies', (req, res, next) => {
 		const terms = req.query.terms
 		Movie.find({$text: {$search: terms}})
 			.limit(10)

@@ -10,6 +10,7 @@ import { User } from './classes/user';
 @Injectable()
 export class UsersService implements OnInit {
   user:User = null
+  editUser:User = null
 
   constructor(
     private http: HttpClient

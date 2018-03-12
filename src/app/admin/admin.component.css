@@ -25,11 +25,11 @@ form.isHidden {
   overflow: hidden;
 }
 
-#edit-search-bar {
+.search-bar {
   width: 50%;
 }
 
-#edit-search-bar ul {
+.search-bar ul {
   list-style: none;
   -webkit-padding-start: 0px;
   display: block;
@@ -40,12 +40,12 @@ form.isHidden {
   width: 100%;
 }
 
-#edit-search-bar ul li:hover {
+.search-bar ul li:hover {
   background-color: #E2DFDF;
   cursor: pointer;
 }
 
-#edit-search-input {
+.search-input {
   border-radius: 30px;
   max-height: 30px;
 }
@@ -54,11 +54,15 @@ input[type="text" i] {
     padding: 1px 10px;
 }
 
+img.dropdown {
+  max-width: 50px;
+}
+
 a {
   color: #FEFEFA !important;
 }
 
-#edit-search-bar ul  li p {
+.search-bar ul  li p {
   border: 1px solid transparent;
   font-size: 0.9rem;
   border-radius: .25rem;
