@@ -1,5 +1,6 @@
 main {
 	background: #FFF;
+  overflow: hidden;
 }
 
 header {
@@ -14,61 +15,72 @@ header {
   font-size: 1em;
 }
 
-form {
-  max-height: 1500px;
-  -webkit-transition: max-height 1.5s linear;
-  transition: max-height 2s linear;
-}
-
-form.isHidden {
-  max-height: 0px;
-  overflow: hidden;
-}
-
-.search-bar {
-  width: 50%;
-}
-
-.search-bar ul {
+.admin-toolbar {
   list-style: none;
-  -webkit-padding-start: 0px;
-  display: block;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid rgba(0,0,0,.15);
-  box-sizing: border-box;
+  position: relative;
+}
+
+.admin-toolbar:after {
+  position: absolute;
+  content: "";
   width: 100%;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid #AAA;
+  z-index: 1;
 }
 
-.search-bar ul li:hover {
-  background-color: #E2DFDF;
-  cursor: pointer;
+.admin-toolbar:before {
+  z-index: 1;
 }
 
-.search-input {
-  border-radius: 30px;
-  max-height: 30px;
+.admin-toolbar li {
+  border: 1px solid #AAA;
+  background: linear-gradient(to bottom, #ECECEC 50%, #D1D1D1 100%);
+  position: relative;
+  z-index: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 #FFF;
+  text-shadow: 0 1px #FFF;
+  margin: 0 -5px;
+  padding: 0 20px;
 }
 
-input[type="text" i] {
-    padding: 1px 10px;
+.admin-toolbar li.selected {
+  background: #FFF;
+  color: #000;
+  z-index: 2;
 }
 
-img.dropdown {
-  max-width: 50px;
+.admin-toolbar li:before,
+.admin-toolbar li:after {
+  position: absolute;
+  bottom: -1px;
+  width: 6px;
+  height: 6px;
+  content: "";
+  border: 1px solid #AAA;
 }
 
-a {
-  color: #FEFEFA !important;
+.admin-toolbar li:before {
+  left: -6px;
+  border-bottom-right-radius: 6px;
+  border-width: 0 1px 1px 0;
+  box-shadow: 2px 2px 0 #FFF;
 }
 
-.search-bar ul  li p {
-  border: 1px solid transparent;
-  font-size: 0.9rem;
-  border-radius: .25rem;
-  color: black !important;
+.admin-toolbar li:after {
+  right: -6px;
+  border-bottom-left-radius: 6px;
+  border-width: 0 0 1px 1px;
+  box-shadow: -2px 2px 0 #FFF;
 }
 
-.required {
-  color: red;
+.tabrow li.selected:before {
+  box-shadow: 2px 2px 0 #FFF;
 }
+.tabrow li.selected:after {
+  box-shadow: -2px 2px 0 #FFF;
+}
+

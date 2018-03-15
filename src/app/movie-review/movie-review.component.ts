@@ -29,7 +29,6 @@ export class MovieReviewComponent implements OnInit {
 
   getMovie(): void {
     this.route.paramMap.subscribe(params => {
-      console.log(params)
       this.movieService.getMovie(params.get('movieTitle'), +params.get('year'))
         .subscribe(
           movie => {
