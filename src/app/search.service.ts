@@ -15,10 +15,11 @@ export class SearchService {
   		debounceTime(400),
   		distinctUntilChanged(),
   		switchMap(terms => {
+        console.log(terms)
         if (searchType === 'movie') {
           return this.basicSearch(terms, 'search/movies')
         }
-        return this.basicSearch(terms, 'search/user')
+        return this.basicSearch(terms, 'search/users')
       })
   	)
   }

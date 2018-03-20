@@ -76,7 +76,7 @@
 		<button class="btn mb-4">
 			Edit or Delete Movie
 		</button>
-		<div id="edit-search-bar" class="search-bar w-100 mx-auto">
+		<div id="edit-search-bar" class="search-bar w-100 mx-auto text-center">
       		<input #editSearch (keyup)="searchTerms$.next(editSearch.value)" [(ngModel)]="movieSearch" id="edit-search-input" class="w-100 search-input" type="text" placeholder="Search Movies..." />
       		<ul *ngIf="results && editSearch.value" class="">
         		<li *ngFor="let result of results">

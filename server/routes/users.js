@@ -19,6 +19,7 @@ const userRouter = (passport) => {
 		user.local.email = email;
 		user.local.password = user.generateHash(password);
 		user.local.picture = picture;
+		user.username = email;
 		email === "stephen" ? user.admin = true : user.admin = false;
 		// TODO: Get rid of above line in favor of populat when shipping project
 

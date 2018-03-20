@@ -1,21 +1,51 @@
 <section id="users-admin" class="mt-4 mb-4 pt-4 pb-4 d-flex flex-column align-items-center justify-content-center">
 	<!-- Search User Section -->
-	<article id="search-user" class="mt-4 mb-4 pt-4 pb-4 d-flex flex-column align-items-center justify-content-center">
-		<div id="user-search-bar" class=" w-100 search-bar">
-			<input #usersSearch (keyup)="userSearch$.next(userSearch.value)" [(ngModel)]="userSearch" id="user-search-input" class="w-100 search-input" type="text" placeholder="Search Users..." />
+	<article id="search-user" class="mt-4 mb-4 pt-0 pb-0 d-flex flex-column align-items-center justify-content-center">
+		<div id="user-search-bar" class=" w-100 text-center search-bar">
+			<input #usersSearch (keyup)="userSearch$.next(usersSearch.value)" [(ngModel)]="userSearchInput" id="user-search-input" class="w-100 search-input" type="text" placeholder="Search Users..." />
 			<ul *ngIf="users && usersSearch.value" class="">
-        		<li *ngFor="let user of users">
-          			<a (click)="setEditUser(user)" class='row justify-content-around mr-0 ml-0'>
-            			<div class="col-3 mx-auto pl-1 pr-1">
-              				<img *ngIf="user.picture; else mockPictureBlock" class="img-fluid w-100 dropdown" src="{{ user.picture }}" alt="{{user.username}}-picture" />
-              				<ng-template #mockPictureBlock>
-                				<img class="img-fluid w-100 dropdown" src="../../assets/images/mock-poster.jpg" alt="{{user.username}}-picture" />
-              				</ng-template>
-            			</div>
-            			<p class="col-9 mx-auto mb-auto mt-auto pl-2 pr-2 text-center">{{ user.username }}</p>
-          			</a>
-        		</li>
-      		</ul>
+      		<li *ngFor="let user of users">
+        			<a (click)="setEditUser(user)" class='row justify-content-around mr-0 ml-0'>
+          			<div class="col-3 mx-auto pl-1 pr-1">
+            				<img *ngIf="user.picture; else mockPictureBlock" class="img-fluid w-100 dropdown" src="{{ user.picture }}" alt="{{user.username}}-picture" />
+            				<ng-template #mockPictureBlock>
+              				<img class="img-fluid w-100 dropdown" src="../../assets/images/mock-poster.jpg" alt="{{user.username}}-picture" />
+            				</ng-template>
+          			</div>
+          			<p class="col-9 mx-auto mb-auto mt-auto pl-2 pr-2 text-center">{{ user.username }}</p>
+        			</a>
+      		</li>
+    		</ul>
 		</div>
+    <div *ngIf="editUser" id="view-single-user" class="row justify-content-around mt-4 mb-2 mr-1, ml-1 pl-1 pr-1">
+        <div class="col-3 mx-auto pl-1 pr-1">
+            <img *ngIf="editUser.picture; else mockPictureBlock" class="img-fluid w-100" src="{{ editUser.picture }}" alt="{{editUser.username}}-picture" />
+            <ng-template #mockPictureBlock>
+              <img class="img-fluid w-100" src="../../assets/images/mock-poster.jpg" alt="{{editUser.username}}-picture" />
+            </ng-template>
+        </div>
+        <p class="col-9 mx-auto mb-auto mt-auto pl-2 pr-2 text-center">{{ editUser.username }}</p>
+    </div>
+    <button *ngIf="editUser" (click)="open(confirmDelete)" type="button" class="btn btn-danger mt-3 mx-auto">Delete User</button>
 	</article>
 </section>
+<ng-template #confirmDelete let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Confirm Delete
+    </h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete this movie?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('cancel click')">
+      Cancel
+    </button>
+    <button type="button" class="btn btn-danger" (click)="c('delete click')">
+      Delete
+    </button>
+  </div>
+</ng-template>

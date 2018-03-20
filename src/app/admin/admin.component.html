@@ -5,8 +5,8 @@
 		</h2>
 	</header>
 	<ul class="admin-toolbar row p-0 pl-4 pr-4 mt-3">
-		<li class="col-3 text-center selected">Movies</li>
-		<li class="col-3 text-center">Users</li>
+		<li routerLink="/admin/movies" [class.selected]="getLastUrlPath() === 'admin' || getLastUrlPath() === 'movies'" class="col-3 text-center selected">Movies</li>
+		<li routerLink="/admin/users" [class.selected]="getLastUrlPath() === 'users'" class="col-3 text-center">Users</li>
 	</ul>
 	<router-outlet></router-outlet>
 </main>

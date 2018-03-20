@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModule, ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule }   from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 
 import { Movie } from '../classes/movie';
@@ -34,6 +34,7 @@ export class AdminComponent implements OnInit {
     private searchService: SearchService,
     private usersService: UsersService,
   	private router: Router,
+    private route: ActivatedRoute,
     private modalService: NgbModal
   ) {
     this.searchService.search(this.searchTerms$, 'movie') 
@@ -48,57 +49,12 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getLastUrlPath()
   }
 
-  onAddSubmit(...movieData) {
-  	this.movieService.addMovie(movieData)
-  		.subscribe(
-  			movie => {
-  				this.messageService.add("Movie Was Successfully added!")
-  				let movieTitle = movie['movieTitle'], year = movie['year'];
-  				setTimeout(() => {
-  					console.log('in')
-  					this.router.navigate([`/movies/${movieTitle}/${year}`])
-  				}, 3000)
-  			},
-  			error => {
-  				console.log(error)
-  				this.messageService.add(error.error)
-  			}
-  		)
-  }
-
-  onEditSubmit(...movieData) {
-    this.movieService.editMovie(movieData)
-      .subscribe(
-        movie => {
-          this.messageService.add(`${movie['movieTitle']} Was Successfully edited!`)
-          let movieTitle = movie['movieTitle'], year = movie['year'];
-          setTimeout(() => {
-            this.router.navigate([`/movies/${movieTitle}/${year}`])
-          }, 3000)
-        },
-        error => {
-          console.log(error)
-          this.messageService.add(error.error)
-        }
-      )
-  }
-
-  onDeleteSubmit(movie) {
-    this.movieService.deleteMovie(movie)
-      .subscribe(
-        res => {
-          this.messageService.add(`${res['movieTitle']} was successfully deleted!`)
-          setTimeout(() => {
-            this.router.navigate(['/'])
-          }, 3000)
-        },
-        error => {
-          console.log(error)
-          this.messageService.add(error.error)
-        }
-      )
+  getLastUrlPath() {
+    let pathArr = this.router.url.split('/')
+    return pathArr[pathArr.length-1]
   }
 
   changeIsAddHidden(): void {
@@ -124,6 +80,8 @@ export class AdminComponent implements OnInit {
     console.log(this.editMovie)
   }
 
+  /*
+
   open(confirmDelete) {
     this.modalService.open(confirmDelete).result.then(
       (result) => {
@@ -135,6 +93,8 @@ export class AdminComponent implements OnInit {
       }
     )
   }
+
+  */
 
 
 }

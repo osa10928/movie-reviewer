@@ -19,7 +19,7 @@ export class AdminUsersComponent implements OnInit {
   editUser:User = this.usersService.editUser;
   users: Object;
   userSearch$ = new Subject<string>()
-  userSearch:string = "";
+  userSearchInput:string = "";
 
   constructor(
   	private messageService: MessageService,
@@ -41,7 +41,23 @@ export class AdminUsersComponent implements OnInit {
   setEditUser(user) {
     this.editUser = user
     this.usersService.editUser = this.editUser
-    this.userSearch = ""
+    this.userSearchInput = ""
+  }
+
+  onDeleteSubmit(user) {
+  	console.log(this.editUser)
+  }
+
+  open(confirmDelete) {
+    this.modalService.open(confirmDelete).result.then(
+      (result) => {
+        if (result === 'delete click') {
+          this.onDeleteSubmit(this.editUser)
+        }
+      },
+      (reason) => {
+      }
+    )
   }
 
 }

@@ -28,7 +28,9 @@ const UserSchema = new mongoose.Schema({
         email        : String,
         name         : String
     },
-    admin            : Boolean
+    admin            : Boolean,
+    username         : {type: String, text: true},
+    picture          : String
 })
 
 
