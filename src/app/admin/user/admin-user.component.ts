@@ -45,8 +45,18 @@ export class AdminUsersComponent implements OnInit {
   }
 
   onDeleteSubmit(user) {
-  	console.log(this.editUser)
-  }
+  	this.usersService.adminDeleteUser(this.editUser)
+  		.subscribe(
+  			res => {
+          		this.messageService.add(`${res['username']} was successfully deleted!`)
+          		this.editUser = null;
+        	},
+        	error => {
+          		console.log(error)
+          		this.messageService.add(error.error)
+        	}
+  		)
+    }
 
   open(confirmDelete) {
     this.modalService.open(confirmDelete).result.then(

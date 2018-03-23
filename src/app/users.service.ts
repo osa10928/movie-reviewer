@@ -88,6 +88,24 @@ export class UsersService implements OnInit {
     }
   }
 
+  adminDeleteUser(user) {
+    console.log(user)
+    const params = new HttpParams()
+      .set('username', user['username'])
+      .set('_id', user['_id'])
+    const options = {
+      withCredentials: true,
+      params: params
+    }
+    return this.http.delete('users/admin/deleteOne', options)
+      .pipe(
+        map((res:any) => {
+          console.log(res)
+          return res as Observable<object>
+        })
+      )
+  }
+
 
   ngOnInit() {
     this.getUser()

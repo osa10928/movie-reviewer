@@ -101,18 +101,28 @@ const userRouter = (passport) => {
 	})
 
 
-	router.post('/logout', (req, res) => {
+	router.post('/logout', (req, res, next) => {
 		console.log(req.user)
 		req.logout()
 		if (req.user) {
-			console.log('error')
-			let err = new Error()
-			err.status = 401
-			err.message("unable to log user out")
-			res.send(err)
+			res.status(401).send('Unable to log the user out')
 		} else {
 			res.json({"success":"User logged out"})
 		}
+	})
+
+	router.delete('/admin/deleteOne', (req, res, next) => {
+		console.log(req.query)
+		if (req.query.username === 'stephen') {
+			res.status(401).send("Unable to delete the main administrator")
+		}
+		let query = {'_id': req.query['_id']}
+		User.findOneAndRemove(query, function(err, doc) {
+			if (err) return next(err);
+			if (doc) return res.json(doc);
+			res.status(422).send("This user no longer exist in the database")
+		})
+
 	})
 
 
