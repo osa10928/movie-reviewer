@@ -111,6 +111,14 @@ const userRouter = (passport) => {
 		}
 	})
 
+	router.get('/admin/getAll', (req, res, next) => {
+		User.find().sort({'username':1})
+			.exec(function(err, docs) {
+				if (err) return next(err)
+				if (docs) return res.json(docs)
+			})
+	})
+
 	router.delete('/admin/deleteOne', (req, res, next) => {
 		console.log(req.query)
 		if (req.query.username === 'stephen') {
@@ -120,9 +128,22 @@ const userRouter = (passport) => {
 		User.findOneAndRemove(query, function(err, doc) {
 			if (err) return next(err);
 			if (doc) return res.json(doc);
-			res.status(422).send("This user no longer exist in the database")
 		})
 
+	})
+
+	router.delete('/admin/deleteMany', (req, res, next) => {
+		let users = req.query.users.split(',')
+		if (users.indexOf('stephen') > -1) { users.splice(users.indexOf('stephen'), 1)}
+			const toDelete = users.length
+		const query = {'username':{ $in: users }}
+		User.remove(query, function(err, docs) {
+			if (err) return next(err)
+			deletedDocs = docs.n
+			if (deletedDocs === toDelete) return res.json('Deleted All Selected Users')
+			if (deletedDocs === 0) return res.json('Sorry, was unable to delete any Users')
+			res.json(`Sorry, could only delete ${deletedDocs} of ${toDelete} Users`)
+		})
 	})
 
 

@@ -17,6 +17,9 @@
       		</li>
     		</ul>
 		</div>
+    <a *ngIf="editUser" (click)="clearUser()" style="color:black !important;text-decoration:underline !important;cursor:pointer" class="mb-3 mt-1 d-block mx-auto text-center">
+        Remove Selected User
+    </a>
     <div *ngIf="editUser" id="view-single-user" class="row justify-content-around mt-4 mb-2 mr-1, ml-1 pl-1 pr-1">
         <div class="col-3 mx-auto pl-1 pr-1">
             <img *ngIf="editUser.picture; else mockPictureBlock" class="img-fluid w-100" src="{{ editUser.picture }}" alt="{{editUser.username}}-picture" />
@@ -26,8 +29,31 @@
         </div>
         <p class="col-9 mx-auto mb-auto mt-auto pl-2 pr-2 text-center">{{ editUser.username }}</p>
     </div>
-    <button *ngIf="editUser" (click)="open(confirmDelete)" type="button" class="btn btn-danger mt-3 mx-auto">Delete User</button>
+    <button *ngIf="editUser" (click)="open(confirmDelete, 'one')" type="button" class="btn btn-danger mt-3 mx-auto">Delete User</button>
 	</article>
+  <article id="list-users" class="mt-4 mb-4 pt-0 pb-0 d-flex flex-column align-items-center justify-content-center">
+    <button *ngIf="!listingUsers; else hideUserListBlock" (click)="listAllUsers()" class="btn mb-4" type="button">
+      List All Users
+    </button>
+    <ng-template #hideUserListBlock>
+      <button (click)="listingUsers = false" class="btn btn-danger mb-4" type="button" id="add-movie-button">
+        Hide Users
+      </button>
+    </ng-template>
+    <form *ngIf="listingUsers" (ngSubmit)="open(confirmDelete, 'many')" class="text-center">
+      <div *ngFor="let user of allUsers" class="row justify-content-around mt-4 mb-2 mr-1, ml-1 pl-1 pr-1">
+        <div class="col-2 mx-auto pl-1 pr-1">
+          <img *ngIf="user.picture; else mockPictureBlock" class="img-fluid w-100" src="{{ user.picture }}" alt="{{user.username}}-picture" />
+          <ng-template #mockPictureBlock>
+            <img class="img-fluid w-100" src="../../assets/images/mock-poster.jpg" alt="{{user.username}}-picture" />
+          </ng-template>
+        </div>
+        <p class="col-7 mx-auto mb-auto mt-auto pl-2 pr-2 text-center">{{ user.username }}</p>
+        <input class="col-3 d-inline-block mx-auto align-self-center" type="checkbox" name="{{ user.username }}" />
+      </div>
+      <button type="submit" class="btn btn-danger" [disabled]="!oneUserChecked()">Delete Checked Users</button>
+    </form>
+  </article>
 </section>
 <ng-template #confirmDelete let-c="close" let-d="dismiss">
   <div class="modal-header">

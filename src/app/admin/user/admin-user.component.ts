@@ -17,9 +17,11 @@ import { SearchService } from '../../search.service';
 export class AdminUsersComponent implements OnInit {
 
   editUser:User = this.usersService.editUser;
+  allUsers:User[] = null
   users: Object;
-  userSearch$ = new Subject<string>()
+  userSearch$ = new Subject<string>();
   userSearchInput:string = "";
+  listingUsers = false;
 
   constructor(
   	private messageService: MessageService,
@@ -44,6 +46,25 @@ export class AdminUsersComponent implements OnInit {
     this.userSearchInput = ""
   }
 
+  clearUser() {
+  	this.editUser = null
+  	this.usersService.editUser = null
+  }
+
+  listAllUsers(){
+  	this.listingUsers = true;
+  	this.usersService.adminGetAllUsers()
+  		.subscribe(
+  			res => {
+  				this.allUsers = res
+  			},
+  			error => {
+  				console.log(error)
+  				this.messageService.add(error.error)
+  			}
+  		)
+  }
+
   onDeleteSubmit(user) {
   	this.usersService.adminDeleteUser(this.editUser)
   		.subscribe(
@@ -58,11 +79,42 @@ export class AdminUsersComponent implements OnInit {
   		)
     }
 
-  open(confirmDelete) {
+  deleteMany() {
+  	let users = []
+  	const checkboxes = document.querySelectorAll('input[type=checkbox]')
+  	Array.prototype.slice.call(checkboxes).map(user => {
+  		user.checked ? users.push(user.name) : null
+  	})
+  	this.usersService.adminDeleteManyUsers(users)
+  		.subscribe(
+  			res => {
+  				this.messageService.add(res)
+  				this.listingUsers = false
+  			},
+  			error => {
+  				console.log(error)
+  				this.messageService.add(error.error)
+  			}
+  		)
+  }
+
+
+  oneUserChecked() {
+  	const checkboxes = document.querySelectorAll('input[type=checkbox]')
+  	return Array.prototype.slice.call(checkboxes).some(x => x.checked)
+  }
+
+  open(confirmDelete, option) {
     this.modalService.open(confirmDelete).result.then(
       (result) => {
         if (result === 'delete click') {
-          this.onDeleteSubmit(this.editUser)
+        	switch (option) {
+        		case 'one':
+        			this.onDeleteSubmit(this.editUser)
+        			break;
+        		case 'many':
+        			this.deleteMany()
+        	}
         }
       },
       (reason) => {

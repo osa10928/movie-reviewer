@@ -88,6 +88,10 @@ export class UsersService implements OnInit {
     }
   }
 
+  adminGetAllUsers() {
+    return this.http.get<User[]>('/users/admin/getAll')
+  }
+
   adminDeleteUser(user) {
     console.log(user)
     const params = new HttpParams()
@@ -101,7 +105,23 @@ export class UsersService implements OnInit {
       .pipe(
         map((res:any) => {
           console.log(res)
+          this.editUser = null
           return res as Observable<object>
+        })
+      )
+  }
+
+  adminDeleteManyUsers(users) {
+    const params = new HttpParams()
+      .set('users', users)
+    const options = {
+      params: params,
+      withCredentials: true
+    }
+    return this.http.delete('users/admin/deleteMany', options)
+      .pipe(
+        map((res:any) => {
+          return res
         })
       )
   }
