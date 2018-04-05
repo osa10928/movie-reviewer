@@ -23,6 +23,7 @@ import { SearchService } from './search.service';
 import { MovieService } from './movie.service';
 import { UsersService } from './users.service';
 import { MessageService } from './message.service';
+import { CommentsService } from './comments.service';
 
 import { TitleCasePipe } from './titleCase.pipe';
 
@@ -52,7 +53,8 @@ import { TitleCasePipe } from './titleCase.pipe';
     MovieService,
     UsersService,
     MessageService,
-    SearchService
+    SearchService,
+    CommentsService
   ],
   bootstrap: [AppComponent]
 })

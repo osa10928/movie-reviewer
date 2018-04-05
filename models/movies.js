@@ -13,7 +13,24 @@ const MovieSchema = new mongoose.Schema({
   createdAt: Date,
   bestWeek: Boolean,
   bestMonth: Boolean,
-  poster: String
+  poster: String,
+  comments: [{
+
+    user: {
+      username: String,
+      picture: String
+    },
+    date: Date,
+    body: String,
+    replies: [{
+      user:{
+        username: String,
+        picture: String
+      },
+      date: Date
+    }]
+
+  }]
 })
 
 

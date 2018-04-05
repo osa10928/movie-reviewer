@@ -58,12 +58,14 @@ app.use((req, res, next) => {
 
 // API file for interacting with MongoDB
 const moviesApi = require('./server/routes/movies');
-const usersApi = require('./server/routes/users')
+const usersApi = require('./server/routes/users');
+const commentsApi = require('./server/routes/comments');
 const searchApi = require('./server/routes/search');
 
 // API location
 app.use('/movies', moviesApi(passport));
 app.use('/users', usersApi(passport));
+app.use('/comments', commentsApi(passport));
 app.use('/search', searchApi());
 
 // Send all other requests to the Angular app

@@ -111,7 +111,7 @@ const userRouter = (passport) => {
 		}
 	})
 
-	router.get('/admin/getAll', (req, res, next) => {
+	router.get('/admin/getAll', isAdmin, (req, res, next) => {
 		User.find().sort({'username':1})
 			.exec(function(err, docs) {
 				if (err) return next(err)
@@ -119,7 +119,7 @@ const userRouter = (passport) => {
 			})
 	})
 
-	router.delete('/admin/deleteOne', (req, res, next) => {
+	router.delete('/admin/deleteOne', isAdmin, (req, res, next) => {
 		console.log(req.query)
 		if (req.query.username === 'stephen') {
 			res.status(401).send("Unable to delete the main administrator")
@@ -132,7 +132,7 @@ const userRouter = (passport) => {
 
 	})
 
-	router.delete('/admin/deleteMany', (req, res, next) => {
+	router.delete('/admin/deleteMany', isAdmin, (req, res, next) => {
 		let users = req.query.users.split(',')
 		if (users.indexOf('stephen') > -1) { users.splice(users.indexOf('stephen'), 1)}
 			const toDelete = users.length
@@ -148,6 +148,14 @@ const userRouter = (passport) => {
 
 
 	return router;
+}
+
+const isAdmin = (res, req, next) => {
+	if (req.user && req.user.admin) {
+		next()
+	} else {
+		res.status(401).send("Only an administrator can perform this action");
+	}
 }
 
 module.exports = userRouter;
