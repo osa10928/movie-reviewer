@@ -1,15 +1,17 @@
-interface User {
+type User = {
 	username:string;
 	picture:string;
 }
 
-interface Replies {
+type Replies = {
 	date:Date;
 	user:User;
+	body:string;
 }
 
 export class Comment {
 	user: User;
 	date: Date;
 	replies?:Replies;
+	body:string;
 }

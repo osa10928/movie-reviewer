@@ -28,3 +28,7 @@ textarea {
 	color: #333;
 }
 
+.comment-username {
+	font-size: .6em;
+	-webkit-margin-after: 0;
+}

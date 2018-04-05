@@ -1,3 +1,5 @@
+import { Comment } from './comment';
+
 export class Movie {
   movieTitle:string;
   year:number;
@@ -12,4 +14,5 @@ export class Movie {
   bestWeek:boolean;
   bestMonth:boolean;
   poster?:string;
+  comments?:Comment[];
 }

@@ -31,7 +31,10 @@ const commentsRouter = (passport) => {
 		}
 
 		Movie.findOneAndUpdate(query, {$push: {"comments": comment}}, options, function(err, movie) {
-			console.log(movie);
+			if (err) {
+				res.status(err.status).send(err.message)
+			}
+			res.json(movie)
 		})
 	})
 

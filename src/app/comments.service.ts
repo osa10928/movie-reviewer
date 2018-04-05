@@ -14,8 +14,7 @@ export class CommentsService {
   	private http: HttpClient
   ) { }
 
-  addComment(comment:string, movie:Movie, user:User) {
-  	console.log(comment, movie, user);
+  addComment(comment:string, movie:Movie, user:User): Observable<Comment[]> {
   	const credentials = {
   		comment,
   		movie,
@@ -28,10 +27,27 @@ export class CommentsService {
 
   	return this.http.post('comments/addComment', credentials, options)
   	  .pipe(
-  	    map((res:any) => {
-  	    	return res
+  	    map((res:Movie) => {
+  	    	return <Comment[]> res.comments
   	    })
   	  )
   }
+
+  /*
+
+  getComments(movie:Movie): Observable<Comment[]> {
+  	const params = new HttpParams()
+  		.set('movieTitle', movie.movieTitle)
+  		.set('year', movie.year.toString())
+  	
+  	const options = {
+  		withCredentials: true,
+  		params: params
+  	}
+
+  	return this.http.get<Comment[]>('comments/getComments', options)
+  }
+
+  */
 
 }

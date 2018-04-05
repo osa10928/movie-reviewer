@@ -4,7 +4,7 @@
 			Comments
 		</h4>
 	</header>
-	<section class="p-3">
+	<section class="p-3 mb-3">
 		<header>
 			<h6>
 				Add a Comment
@@ -14,7 +14,7 @@
 			</div>
 		</header>
 		<ng-template #addCommentBlock>
-			<form (ngSubmit)="addComment(commentInput.value)">
+			<form (ngSubmit)="addComment(commentInput.value); commentInput.value=null">
 				<div class="comment-block">
 					<textarea #commentInput (keyup)="onTextareaKey(commentInput.value)" class="w-100 p-2" maxlength="10000"></textarea>
 				</div>
@@ -31,5 +31,20 @@
 				</div>
 			</form>
 		</ng-template>
+	</section>
+	<section *ngIf="comments" class="p-1 mb-3">
+		<article *ngFor="let comment of comments" class="d-flex mb-2">
+			<div class="comment-img-container w-25 mr-1">
+				<img *ngIf="comment.user.picture; else mockUserImageBlock" class="img-fluid" src="{{ comment.user.picture }}" alt="{{comment.user.username }}-picture" />
+            	<ng-template #mockUserImageBlock>
+              		<img class="img-fluid" src="../../assets/images/mock-poster.jpg" alt="{{comment.user.username}}-picture" />
+            	</ng-template>
+			</div>
+			<div class="comment-content d-flex flex-column p-1">
+				<p class="comment-username pb-1 mb-0">{{ comment.user.username }}</p>
+				<p class="comment-content pb-1 mb-0">
+				{{ comment.body }}</p>
+			</div>
+		</article>
 	</section>
 </article>

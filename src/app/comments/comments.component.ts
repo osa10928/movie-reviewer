@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 
 import { Movie } from '../classes/movie';
+import { Comment } from '../classes/comment';
 import { UsersService } from '../users.service';
 import { CommentsService } from '../comments.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-comments',
@@ -11,27 +13,40 @@ import { CommentsService } from '../comments.service';
 })
 export class CommentsComponent implements OnInit {
 
-  @Input() movie: Movie; 
+  @Input() movie: Movie;
+  comments: Comment[];
+  textareaLength:number = 0;
 
   constructor(
   	private usersService: UsersService,
-  	private commentsService: CommentsService
+  	private commentsService: CommentsService,
+  	private messageService: MessageService
   ) { }
 
-  textareaLength:number = 0;
 
   ngOnInit() {
+  	this.getComments()
   }
 
-  onTextareaKey(value) {
+  onTextareaKey(value): void {
   	this.textareaLength = value.length;
   }
 
-  addComment(comment, movie) {
+  addComment(comment): void {
   	this.commentsService.addComment(comment, this.movie, this.usersService.getUser())
   		.subscribe(
-  			comment => console.log(comment)
+  			comments => {
+  				this.comments = comments.reverse()
+  			},
+  			error => {
+          		console.log(error)
+          		this.messageService.add(error.error)
+        	}
   		)
+  }
+
+  getComments(): void {
+  	this.comments = this.movie.comments.reverse();
   }
 
 }
