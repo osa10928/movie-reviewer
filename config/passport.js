@@ -26,6 +26,8 @@ module.exports = (passport) => {
 		}
 	));
 
+	/*
+
 	passport.use(new FaceBookStrategy({
 		clientID: process.env.FACEBOOK_CLIENT_ID,
 		clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
@@ -58,6 +60,7 @@ module.exports = (passport) => {
 		})
 	}
 	))
+	*/
 
 	passport.serializeUser((user, done) => {
 		done(null, user.id);

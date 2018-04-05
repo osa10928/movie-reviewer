@@ -1,8 +1,4 @@
-article {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
-
-.movie-headers {
+.comment-header {
   background-image: url('../../assets/images/bumps.svg');
   background-color: #B9090B;
   font-family: 'Bowlby One SC', cursive;
@@ -14,15 +10,6 @@ article {
   font-size: 1em;
 }
 
-.movie-reviews-content {
+section {
   background: white;
-}
-
-#movie-review {
-  background: white;
-  padding: 1em;
-}
-
-div.ratings {
-  font-size: .7em;
 }

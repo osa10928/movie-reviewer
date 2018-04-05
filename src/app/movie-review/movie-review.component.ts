@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from '../classes/movie';
 import { MovieService } from '../movie.service';
 import { MessageService } from '../message.service';
-
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-movie-review',
@@ -20,6 +20,7 @@ export class MovieReviewComponent implements OnInit {
     private router: Router,
     private movieService: MovieService,
     private messageService: MessageService,
+    private usersService: UsersService,
     private location: Location
   ) { }
 

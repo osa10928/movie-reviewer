@@ -40,7 +40,7 @@
         Hide Users
       </button>
     </ng-template>
-    <form *ngIf="listingUsers" (ngSubmit)="open(confirmDelete, 'many')" class="text-center">
+    <form [class.isHidden]="!listingUsers" (ngSubmit)="open(confirmDelete, 'many')" class="text-center">
       <div *ngFor="let user of allUsers" class="row justify-content-around mt-4 mb-2 mr-1, ml-1 pl-1 pr-1">
         <div class="col-2 mx-auto pl-1 pr-1">
           <img *ngIf="user.picture; else mockPictureBlock" class="img-fluid w-100" src="{{ user.picture }}" alt="{{user.username}}-picture" />

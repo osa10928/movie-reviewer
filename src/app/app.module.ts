@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './messages/messages.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CommentsComponent } from './comments/comments.component';
 
 import { SearchService } from './search.service';
 import { MovieService } from './movie.service';
@@ -34,7 +35,8 @@ import { TitleCasePipe } from './titleCase.pipe';
     MessagesComponent,
     TitleCasePipe,
     NavigationComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+<article class="w-100 d-flex flex-column">
+	<header class="comment-header text-center">
+		<h4>
+			Comments
+		</h4>
+	</header>
+	<section class="p-3">
+		<header>
+			<h6>
+				Add a Comment
+			</h6>
+			<div *ngIf="!this.usersService.getUser()">
+				<p>You must be logged in to post a comment Please <a class="sign-in-link" routerLink="/login">sign in</a> if you wish to comment</p>
+			</div>
+		</header>
+	</section>
+</article>
