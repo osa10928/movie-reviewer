@@ -27,13 +27,13 @@ export class CommentsService {
 
   	return this.http.post('comments/addComment', credentials, options)
   	  .pipe(
-  	    map((res:Movie) => {
-  	    	return <Comment[]> res.comments
+  	    map((res:Comment[]) => {
+  	    	return <Comment[]> res
   	    })
   	  )
   }
 
-  editComment(newComment, editedComment, movie, user) {
+  editComment(newComment, editedComment, movie, user): Observable<Comment> {
   	const credentials = {
   		newComment, editedComment, movie, user
   	}
@@ -42,12 +42,17 @@ export class CommentsService {
   		withCredentials: true
   	}
 
-  	return this.http.post('comments/editComment', credentials, options)
-  	  .pipe(
-  	  	map((res:any) => {
-  	  		return <Comment> res
-  	  	})
-  	  )
+  	return this.http.post<Comment>('comments/editComment', credentials, options)
+  }
+
+  deleteComment(comment, movie, user): Observable<Comment[]> {
+
+  	const credentials = { comment, movie, user }
+
+  	const options = { withCredentials: true }
+
+  	return this.http.post<Comment[]>('comments/deleteComment', credentials, options)
+
   }
 
   /*

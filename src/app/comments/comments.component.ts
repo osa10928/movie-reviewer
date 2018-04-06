@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
+import { NgbModule, ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Movie } from '../classes/movie';
 import { Comment } from '../classes/comment';
@@ -21,7 +22,8 @@ export class CommentsComponent implements OnInit {
   constructor(
   	private usersService: UsersService,
   	private commentsService: CommentsService,
-  	private messageService: MessageService
+  	private messageService: MessageService,
+  	private modalService: NgbModal
   ) { }
 
 
@@ -70,8 +72,34 @@ export class CommentsComponent implements OnInit {
   		)
   }
 
+  deleteComment(comment) {
+  	
+  	this.commentsService.deleteComment(comment, this.movie, this.usersService.getUser())
+  	  .subscribe(
+  	  	comments => {
+  	  		this.comments = comments.reverse()
+  	  	},
+  	  	error => {
+  	  		console.log(error)
+  	  		this.messageService.add(error.error)
+  	  	}
+  	  )
+  }
+
   toggleEditing(comment): void {
   	comment.editing == true ? comment.editing = null : comment.editing = true;
+  }
+
+  open(confirmDelete, comment) {
+    this.modalService.open(confirmDelete).result.then(
+      (result) => {
+        if (result === 'delete click') {
+          this.deleteComment(comment)
+        }
+      },
+      (reason) => {
+      }
+    )
   }
 
 }

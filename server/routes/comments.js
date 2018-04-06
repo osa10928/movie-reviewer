@@ -35,7 +35,7 @@ const commentsRouter = (passport) => {
 			if (err) {
 				res.status(err.status).send(err.message)
 			}
-			res.json(movie)
+			res.json(movie.comments)
 		})
 	})
 
@@ -75,6 +75,35 @@ const commentsRouter = (passport) => {
 		})
 		
 	})
+
+	router.post('/deleteComment', verifyUser, (req, res, next) => {
+
+			const query = {
+				imdb: req.body.movie.imdb,
+
+			}
+
+			const update = {
+				$pull: {
+					"comments": {
+						"_id": new ObjectId(req.body.comment._id)
+					}
+				}
+			}
+
+			const options = {
+				safe: true,
+				new: true
+			}
+
+			Movie.findOneAndUpdate(query, update, options, function(err, movie) {
+				if (err) {
+					res.status(err.status || error.code).send(err.message)
+				}
+				res.json(movie.comments)
+			})
+
+		})
 
 	return router;
 
