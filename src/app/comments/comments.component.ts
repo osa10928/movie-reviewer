@@ -16,6 +16,7 @@ export class CommentsComponent implements OnInit {
   @Input() movie: Movie;
   comments: Comment[];
   textareaLength:number = 0;
+  editTextareaLength:number = 0;
 
   constructor(
   	private usersService: UsersService,
@@ -32,7 +33,12 @@ export class CommentsComponent implements OnInit {
   	this.textareaLength = value.length;
   }
 
+  onEditTextareaKey(value) : void {
+  	this.editTextareaLength = value.length;
+  }
+
   addComment(comment): void {
+
   	this.commentsService.addComment(comment, this.movie, this.usersService.getUser())
   		.subscribe(
   			comments => {
@@ -47,6 +53,25 @@ export class CommentsComponent implements OnInit {
 
   getComments(): void {
   	this.comments = this.movie.comments.reverse();
+  }
+
+  editComment(newComment, editedComment): void {
+
+  	this.commentsService.editComment(newComment, editedComment, this.movie, this.usersService.getUser())
+  		.subscribe(
+  			comment => {
+  				editedComment.body = comment.body
+  				console.log(editedComment)
+  			},
+  			error => {
+  				console.log(error)
+  				this.messageService.add(error.error)
+  			}
+  		)
+  }
+
+  toggleEditing(comment): void {
+  	comment.editing == true ? comment.editing = null : comment.editing = true;
   }
 
 }

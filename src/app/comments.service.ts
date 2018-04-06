@@ -33,6 +33,23 @@ export class CommentsService {
   	  )
   }
 
+  editComment(newComment, editedComment, movie, user) {
+  	const credentials = {
+  		newComment, editedComment, movie, user
+  	}
+
+  	const options = {
+  		withCredentials: true
+  	}
+
+  	return this.http.post('comments/editComment', credentials, options)
+  	  .pipe(
+  	  	map((res:any) => {
+  	  		return <Comment> res
+  	  	})
+  	  )
+  }
+
   /*
 
   getComments(movie:Movie): Observable<Comment[]> {

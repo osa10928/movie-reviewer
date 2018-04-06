@@ -18,9 +18,7 @@
 				<div class="comment-block">
 					<textarea #commentInput (keyup)="onTextareaKey(commentInput.value)" class="w-100 p-2" maxlength="10000"></textarea>
 				</div>
-				<div class="comment-action pl-3 pr-3 pb-3">
-				</div>
-				<div class="comment-action d-flex">
+				<div class="comment-actions d-flex">
 					<div class="comment-length w-50 p-3 align-middle">
 						<em class="d-inline">{{ textareaLength }}</em>
 						/10000
@@ -34,16 +32,40 @@
 	</section>
 	<section *ngIf="comments" class="p-1 mb-3">
 		<article *ngFor="let comment of comments" class="d-flex mb-2">
-			<div class="comment-img-container w-25 mr-1">
-				<img *ngIf="comment.user.picture; else mockUserImageBlock" class="img-fluid" src="{{ comment.user.picture }}" alt="{{comment.user.username }}-picture" />
+			<div class="comment-img-container mr-1 mt-1">
+				<img *ngIf="comment.user.picture; else mockUserImageBlock" class="comment-img img-fluid" src="{{ comment.user.picture }}" alt="{{comment.user.username }}-picture" />
             	<ng-template #mockUserImageBlock>
-              		<img class="img-fluid" src="../../assets/images/mock-poster.jpg" alt="{{comment.user.username}}-picture" />
+              		<img class="comment-img img-fluid" src="../../assets/images/mock-poster.jpg" alt="{{comment.user.username}}-picture" />
             	</ng-template>
 			</div>
 			<div class="comment-content d-flex flex-column p-1">
 				<p class="comment-username pb-1 mb-0">{{ comment.user.username }}</p>
-				<p class="comment-content pb-1 mb-0">
+				<p *ngIf="!comment.editing; else editingBlock" #postedComment class="comment-content pb-1 mb-0">
 				{{ comment.body }}</p>
+				<ng-template #editingBlock class="comment-content pb-1 mb-0">
+					<form (ngSubmit)="editComment(editCommentInput.value, comment); toggleEditing(comment)">
+						<div class="comment-block">
+							<textarea #editCommentInput (keyup)="onEditTextareaKey(editCommentInput.value)" class="w-100 p-2" maxlength="10000">{{ comment.body }}</textarea>
+						</div>
+						<div class="comment-actions d-flex">
+							<div class="edit-comment-length p-3 align-middle">
+								<em class="d-inline">{{ textareaLength }}</em>
+						/10000
+							</div>
+							<button (click)="toggleEditing(comment)" class="cancel-edit-btn">
+								Cancel
+							</button>
+							<button class="post-edit-btn" type="submit">
+						Edit Comment
+							</button>
+						</div>
+					</form>
+				</ng-template>
+				<div class="posted-comment-actions row w-100">
+					<a class="col reply-comment">Reply</a>
+					<a (click)="toggleEditing(comment)" class="col edit-comment">Edit</a>
+					<a class="col delete-comment">Delete</a>
+				</div>
 			</div>
 		</article>
 	</section>

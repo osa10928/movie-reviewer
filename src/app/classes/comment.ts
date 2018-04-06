@@ -14,4 +14,5 @@ export class Comment {
 	date: Date;
 	replies?:Replies;
 	body:string;
+	editing?:boolean
 }

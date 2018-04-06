@@ -28,7 +28,43 @@ textarea {
 	color: #333;
 }
 
+.edit-comment-length {
+	background: #eaeaea;
+	color: #333;
+	font-size: 0.6em;
+}
+
+.post-edit-btn, .cancel-edit-btn {
+	font-size: 0.6em;
+}
+
 .comment-username {
-	font-size: .6em;
+	font-size: .8em;
 	-webkit-margin-after: 0;
+	color: #8e8e8e !important;
+}
+
+.comment-img-container {
+	width: 15%;
+	min-width: 64px;
+	min-height: 64px;
+}
+
+.comment-content {
+	width: 85%;
+}
+
+.posted-comment-actions {
+	margin-top: auto;
+}
+
+.reply-comment, .edit-comment, .delete-comment {
+	font-size: 0.6em;
+	color: #8c8c8c !important;
+	cursor: pointer;
+}
+
+.reply-comment:hover, .edit-comment:hover, .delete-comment:hover {
+	text-decoration: underline !important;
+	color: #333 !important;
 }
