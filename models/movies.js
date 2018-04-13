@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Comment = require('./comments')
 
 const MovieSchema = new mongoose.Schema({
   movieTitle: {type: String, text: true},
@@ -14,23 +15,7 @@ const MovieSchema = new mongoose.Schema({
   bestWeek: Boolean,
   bestMonth: Boolean,
   poster: String,
-  comments: [{
-
-    user: {
-      username: String,
-      picture: String
-    },
-    date: Date,
-    body: String,
-    replies: [{
-      user:{
-        username: String,
-        picture: String
-      },
-      date: Date
-    }]
-
-  }]
+  comments: [String]
 })
 
 

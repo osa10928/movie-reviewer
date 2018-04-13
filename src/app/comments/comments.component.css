@@ -28,13 +28,13 @@ textarea {
 	color: #333;
 }
 
-.edit-comment-length {
+.edit-comment-length, .reply-comment-length {
 	background: #eaeaea;
 	color: #333;
 	font-size: 0.6em;
 }
 
-.post-edit-btn, .cancel-edit-btn {
+.post-edit-btn, .cancel-edit-btn, .post-reply-btn, .cancel-reply-btn {
 	font-size: 0.6em;
 }
 
@@ -54,6 +54,11 @@ textarea {
 	width: 85%;
 }
 
+.comment-content-body {
+	width: 85%;
+	white-space: pre-line;
+}
+
 .posted-comment-actions {
 	margin-top: auto;
 }
@@ -67,4 +72,22 @@ textarea {
 .reply-comment:hover, .edit-comment:hover, .delete-comment:hover {
 	text-decoration: underline !important;
 	color: #333 !important;
+}
+
+.reply-section {
+	margin-top: auto;
+}
+
+.reply-img-container {
+	width: 10%;
+}
+
+
+.clicked {
+	text-decoration: underline !important;
+	color: #B9090B !important;
+}
+
+.none {
+	display: none;
 }

@@ -34,7 +34,7 @@ const movieRouter = (passport) => {
 							return
 						}
 						let query = {'imdb':movie['imdb']},
-							options = {'upsert':true, 'new':true}
+							options = {upsert:true, new:true}
 						Movie.findOneAndUpdate(query, movie, options, function(err, movie) {
 							if (err) return next(err);
 							console.log(movie)

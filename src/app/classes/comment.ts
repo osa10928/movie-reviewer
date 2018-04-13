@@ -1,18 +1,15 @@
+import { Reply } from './reply';
+
 type User = {
 	username:string;
 	picture:string;
 }
 
-type Replies = {
-	date:Date;
-	user:User;
-	body:string;
-}
-
 export class Comment {
 	user: User;
 	date: Date;
-	replies?:Replies;
+	replies?:Reply[];
 	body:string;
-	editing?:boolean
+	movie_id: object;
+	editing?:boolean;
 }

@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from './classes/user';
 import { Movie } from './classes/movie';
 import { Comment } from './classes/comment';
+import { Reply } from './classes/reply';
 
 @Injectable()
 export class CommentsService {
@@ -25,17 +26,21 @@ export class CommentsService {
   		withCredentials: true
   	}
 
-  	return this.http.post('comments/addComment', credentials, options)
-  	  .pipe(
-  	    map((res:Comment[]) => {
-  	    	return <Comment[]> res
-  	    })
-  	  )
+  	return this.http.post<Comment[]>('comments/addComment', credentials, options)
   }
 
-  editComment(newComment, editedComment, movie, user): Observable<Comment> {
+  getComments(movie): Observable<Comment[]> {
+
+  	const params = new HttpParams()
+  	  .set('movie_id', movie._id)
+
+  	return this.http.get<Comment[]>('comments/getComments', {params})
+
+  }
+
+  editComment(newComment, editedComment, user): Observable<Comment> {
   	const credentials = {
-  		newComment, editedComment, movie, user
+  		newComment, editedComment, user
   	}
 
   	const options = {
@@ -55,21 +60,34 @@ export class CommentsService {
 
   }
 
-  /*
+  addReply(reply, comment, user): Observable<Comment[]> {
 
-  getComments(movie:Movie): Observable<Comment[]> {
-  	const params = new HttpParams()
-  		.set('movieTitle', movie.movieTitle)
-  		.set('year', movie.year.toString())
-  	
-  	const options = {
-  		withCredentials: true,
-  		params: params
-  	}
+  	const credentials = { reply, comment, user }
 
-  	return this.http.get<Comment[]>('comments/getComments', options)
+  	const options = { withCredentials: true }
+
+  	return this.http.post<Comment[]>('comments/addReply', credentials, options)
+
   }
 
-  */
+  editReply(newReply, editReply, comment, user): Observable<Comment[]> {
+
+  	const credentials = { newReply, editReply, comment, user }
+
+  	const options = { withCredentials: true }
+
+  	return this.http.post<Comment[]>('comments/editReply', credentials, options)
+
+  }
+
+  deleteReply(reply, comment, user): Observable<Comment[]> {
+
+  	const credentials = { reply, comment, user }
+
+  	const options = { withCredentials: true }
+
+  	return this.http.post<Comment[]>('comments/deleteReply', credentials, options)
+  	
+  }
 
 }
